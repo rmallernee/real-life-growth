@@ -5,674 +5,285 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#101b2d">
-<title>Real Life Growth 2.0 — Prototype</title>
+<title>Real Life Growth 2.0</title>
 <style>
-:root{--bg:#0b1423;--panel:#142238;--panel2:#1a2c45;--ink:#f4f7fb;--muted:#a9b8ca;--gold:#f5c66b;--mint:#69d6b1;--blue:#76b7ff;--line:#2c405c;--pink:#ed9cba}
+:root{--bg:#0b1423;--ink:#f4f7fb;--muted:#a9b8ca;--gold:#f5c66b;--mint:#69d6b1;--line:#2c405c}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#1b3552 0,#0b1423 52%);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:0}
+body{margin:0;background:radial-gradient(ellipse at top,#1b3552,#0b1423 52%);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}
 .app{max-width:1120px;margin:auto;padding:18px 18px 100px}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(145deg,#f4c76c,#c67e35);display:grid;place-items:center;font-size:24px;box-shadow:0 8px 24px #0005}
-.brand b{display:block;font-size:17px;letter-spacing:.03em}
-.brand small{color:var(--muted)}
+.brand{display:flex;align-items:center;gap:10px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(145deg,#f4c76c,#c67e35);display:grid;place-items:center;font-size:24px}
+.brand b{display:block;font-size:17px}.brand small{color:var(--muted)}
 .pill{background:#263b56;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:7px 11px;font-size:12px}
-.select{background:var(--panel);color:var(--ink);border:1px solid var(--line);padding:10px 12px;border-radius:12px;max-width:155px}
+.select{background:#142238;color:var(--ink);border:1px solid var(--line);padding:10px 12px;border-radius:12px;max-width:155px}
 .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-bottom:16px}
 .card{background:linear-gradient(145deg,#192c45,#122036);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 12px 35px #0002}
-.hero-main{min-height:250px;position:relative;overflow:hidden}
-.eyebrow{color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.13em;font-size:11px}
-.hero h1{font-size:clamp(27px,4vw,40px);line-height:1.05;margin:8px 0}
-.sub{color:var(--muted);margin:0}
-.levelrow{display:flex;align-items:center;gap:10px;margin-top:18px}
-.levelbadge{background:#4b3b24;color:#ffe1a1;border:1px solid #8c6a36;border-radius:12px;padding:8px 11px;font-weight:800}
-.progress{height:11px;border-radius:99px;background:#263b55;overflow:hidden;flex:1}
-.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#e8a94d,#ffe08d);border-radius:99px;transition:width .4s}
-.tiny{font-size:12px;color:var(--muted)}
-.character{display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:215px;background:radial-gradient(circle at 50% 40%,#385b7a,#172a43 68%);border-radius:18px;position:relative}
-.avatar{font-size:94px;filter:drop-shadow(0 12px 9px #0006);line-height:1.1}
-.charname{font-weight:800;margin-top:8px}
-.charstage{font-size:12px;color:#d7e5f3}
-.tabs{display:flex;gap:7px;overflow-x:auto;overflow-y:hidden;padding:7px 2px 14px;position:sticky;top:0;background:#0d1929ed;z-index:10;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
-.tabs .tab{flex:0 0 auto;min-height:42px}
-.tab{white-space:nowrap;padding:10px 13px;border-radius:12px;background:#172941;color:var(--muted);border:1px solid var(--line)}
+.hero-main{min-height:250px;position:relative;overflow:hidden}.eyebrow{color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.13em;font-size:11px}
+.hero h1{font-size:clamp(27px,4vw,40px);line-height:1.05;margin:8px 0}.sub{color:var(--muted);margin:0}
+.levelrow{display:flex;align-items:center;gap:10px;margin-top:18px}.levelbadge{background:#4b3b24;color:#ffe1a1;border:1px solid #8c6a36;border-radius:12px;padding:8px 11px;font-weight:800}
+.progress{height:11px;border-radius:99px;background:#263b55;overflow:hidden;flex:1}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#e8a94d,#ffe08d);border-radius:99px;transition:width .4s}
+.tiny{font-size:12px;color:var(--muted)}.character{display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:215px;background:radial-gradient(circle at 50% 40%,#385b7a,#172a43 68%);border-radius:18px;position:relative}
+.avatar{width:150px;height:150px;filter:drop-shadow(0 12px 9px #0006);line-height:1.1}.avatar img{width:100%;height:100%;object-fit:contain}
+.charname{font-weight:800;margin-top:8px}.charstage{font-size:12px;color:#d7e5f3}
+.tabs{display:flex;gap:7px;overflow-x:auto;padding:7px 2px 14px;position:sticky;top:0;background:#0d1929ed;z-index:10}
+.tab{white-space:nowrap;padding:10px 13px;border-radius:12px;background:#172941;color:var(--muted);border:1px solid var(--line);min-height:42px}
 .tab.active{background:#f0bd62;color:#1b2634;border-color:#f0bd62;font-weight:800}
-.section{display:none}
-.section.active{display:block}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
-.stat{background:#172941;border:1px solid var(--line);border-radius:16px;padding:13px}
-.stat b{display:block;font-size:23px}
-.stat span{color:var(--muted);font-size:12px}
-.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:4px 0 12px}
-.sectionhead h2{font-size:20px;margin:0}
+.section{display:none}.section.active{display:block}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}.stat{background:#172941;border:1px solid var(--line);border-radius:16px;padding:13px}
+.stat b{display:block;font-size:23px}.stat span{color:var(--muted);font-size:12px}
+.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:4px 0 12px}.sectionhead h2{font-size:20px;margin:0}
 .btn{background:linear-gradient(135deg,#f4c66f,#dc9844);color:#1b2634;font-weight:800;border-radius:12px;padding:10px 14px}
-.btn.secondary{background:#233a56;color:var(--ink);border:1px solid var(--line)}
-.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
-.skill{padding:12px 0;border-bottom:1px solid var(--line)}
-.skill:last-child{border:0}
-.skilltop{display:flex;justify-content:space-between;gap:8px;align-items:center}
-.skillname{font-weight:700}
-.skillxp{font-size:12px;color:var(--muted)}
-.skillbar{height:9px;background:#293e59;border-radius:99px;margin-top:8px;overflow:hidden}
+.btn.secondary{background:#233a56;color:var(--ink);border:1px solid var(--line)}.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.skill{padding:12px 0;border-bottom:1px solid var(--line)}.skill:last-child{border:0}.skilltop{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.skillname{font-weight:700}.skillxp{font-size:12px;color:var(--muted)}.skillbar{height:9px;background:#293e59;border-radius:99px;margin-top:8px;overflow:hidden}
 .skillbar i{height:100%;display:block;border-radius:99px;background:linear-gradient(90deg,#48bda2,#9be6ca)}
 .skillmeta{display:flex;justify-content:space-between;margin-top:4px;font-size:11px;color:var(--muted)}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.field{display:flex;flex-direction:column;gap:5px}
-.field.full{grid-column:1/-1}
-.field label{font-size:12px;color:var(--muted);font-weight:700}
-.field input,.field select,.field textarea{width:100%;background:#0e1b2d;color:var(--ink);border:1px solid var(--line);border-radius:11px;padding:11px}
-.field textarea{min-height:76px;resize:vertical}
-.chips{display:flex;flex-wrap:wrap;gap:7px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}
+.field label{font-size:12px;color:var(--muted);font-weight:700}.field input,.field select,.field textarea{width:100%;background:#0e1b2d;color:var(--ink);border:1px solid var(--line);border-radius:11px;padding:11px}
+.field textarea{min-height:76px;resize:vertical}.chips{display:flex;flex-wrap:wrap;gap:7px}
 .chip{border:1px solid var(--line);border-radius:999px;padding:7px 10px;background:#1a2d46;color:#dbe6f1;font-size:12px}
 .chip.selected{background:#345d5a;border-color:#68d4b1;color:#eafff7}
-.activity{display:flex;gap:11px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
-.activity:last-child{border:0}
+.activity{display:flex;gap:11px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}.activity:last-child{border:0}
 .activity .ico{width:38px;height:38px;border-radius:12px;background:#263e5a;display:grid;place-items:center;font-size:19px;flex-shrink:0}
-.activity b{display:block}
-.activity small{color:var(--muted)}
-.activity .earned{margin-left:auto;color:var(--mint);font-weight:800;white-space:nowrap}
+.activity b{display:block}.activity small{color:var(--muted)}.activity .earned{margin-left:auto;color:var(--mint);font-weight:800;white-space:nowrap}
 .notice{background:#253b52;border:1px solid #49637c;padding:12px;border-radius:13px;color:#d9e7f5;font-size:13px}
 .achievement{display:flex;align-items:center;gap:12px;padding:12px;background:#1b3049;border:1px solid var(--line);border-radius:15px;margin:9px 0}
-.achievement .medal{font-size:28px}
-.achievement small{color:var(--muted)}
-.locked{opacity:.45}
+.achievement .medal{font-size:28px}.achievement small{color:var(--muted)}.locked{opacity:.45}
 .modalback{position:fixed;inset:0;background:#030914c9;display:none;align-items:center;justify-content:center;padding:18px;z-index:20}
-.modalback.show{display:flex}
-.modal{width:min(620px,100%);max-height:90vh;overflow:auto;background:#14243a;border:1px solid #48617e;border-radius:22px;padding:20px;box-shadow:0 25px 80px #0009}
-.modal h2{margin:0 0 14px}
-.close{float:right;background:#293e58;color:white;border-radius:10px;padding:6px 10px}
+.modalback.show{display:flex}.modal{width:min(620px,100%);max-height:90vh;overflow:auto;background:#14243a;border:1px solid #48617e;border-radius:22px;padding:20px;box-shadow:0 25px 80px #0009}
+.modal h2{margin:0 0 14px}.close{float:right;background:#293e58;color:white;border-radius:10px;padding:6px 10px}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#f3c56d;color:#1a2635;font-weight:800;padding:13px 18px;border-radius:14px;box-shadow:0 10px 35px #0008;display:none;z-index:40;text-align:center;max-width:90%}
-.toast.show{display:block;animation:pop .3s}
-@keyframes pop{from{transform:translate(-50%,15px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
-.fireworks{font-size:36px;letter-spacing:7px;text-align:center;animation:celebrate .7s infinite alternate}
-@keyframes celebrate{to{transform:scale(1.12) rotate(2deg)}}
-.footer{margin-top:22px;color:#8193a9;font-size:11px;text-align:center}
-.empty{color:var(--muted);padding:18px;text-align:center}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.tag{font-size:10px;padding:4px 7px;border-radius:7px;background:#344a63;color:#dce9f5}
-.marketitem{border:1px solid var(--line);border-radius:14px;padding:12px;margin:8px 0;background:#182b43}
-
-/* FAMILY PROFILE CARDS */
+.toast.show{display:block;animation:pop .3s}@keyframes pop{from{transform:translate(-50%,15px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+.fireworks{font-size:36px;letter-spacing:7px;text-align:center;animation:celebrate .7s infinite alternate}@keyframes celebrate{to{transform:scale(1.12) rotate(2deg)}}
+.footer{margin-top:22px;color:#8193a9;font-size:11px;text-align:center}.empty{color:var(--muted);padding:18px;text-align:center}
+.tag{font-size:10px;padding:4px 7px;border-radius:7px;background:#344a63;color:#dce9f5}.marketitem{border:1px solid var(--line);border-radius:14px;padding:12px;margin:8px 0;background:#182b43}
 .family-switcher{background:linear-gradient(145deg,#192c45,#122036);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:16px}
-.switcher-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
-.switcher-head h2{font-size:17px;margin:0}
+.switcher-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.switcher-head h2{font-size:17px;margin:0}
 .profile-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .profile-card{position:relative;min-height:125px;padding:14px 10px;border-radius:16px;background:#1b3049;border:2px solid var(--line);color:var(--ink);text-align:center;transition:.2s ease}
-.profile-card:hover{transform:translateY(-2px);border-color:var(--gold)}
-.profile-card.active{background:linear-gradient(145deg,#304c63,#203b53);border-color:var(--gold);box-shadow:0 0 0 2px #f5c66b22}
-.profile-avatar{font-size:38px;line-height:1.2;margin-bottom:6px}
-.profile-name{display:block;font-weight:800;font-size:15px}
-.profile-details{display:block;color:var(--muted);font-size:11px;margin-top:4px}
-.profile-check{position:absolute;top:7px;right:9px;color:var(--gold);font-weight:900}
-.add-profile-card{border:2px dashed #526b85;background:#14243a;color:var(--muted)}
-.add-profile-card .profile-avatar{color:var(--gold);font-size:36px}
-.switcher-note{color:var(--muted);font-size:11px;margin:12px 0 0}
-.top .select{display:none}
-
-@media(max-width:700px){
-.tabs{position:sticky;top:0;flex-wrap:wrap;overflow:visible;gap:6px}
-.tabs .tab{flex:1 1 calc(33.333% - 6px);padding:9px 7px;font-size:12px}
-.hero{grid-template-columns:1fr}
-.character{min-height:160px}
-.avatar{font-size:75px}
-.grid{grid-template-columns:1fr}
-.statgrid{grid-template-columns:repeat(3,1fr)}
-.app{padding:13px 12px 90px}
-.formgrid{grid-template-columns:1fr}
-.field.full{grid-column:auto}
-.top{align-items:flex-start}
-.brand b{font-size:14px}
-}
-@media(max-width:600px){
-.profile-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
-.profile-card{min-height:115px}
-}
+.profile-card:hover{transform:translateY(-2px);border-color:var(--gold)}.profile-card.active{background:linear-gradient(145deg,#304c63,#203b53);border-color:var(--gold);box-shadow:0 0 0 2px #f5c66b22}
+.profile-avatar{font-size:38px;line-height:1.2;margin-bottom:6px}.profile-name{display:block;font-weight:800;font-size:15px}
+.profile-details{display:block;color:var(--muted);font-size:11px;margin-top:4px}.profile-check{position:absolute;top:7px;right:9px;color:var(--gold);font-weight:900}
+.add-profile-card{border:2px dashed #526b85;background:#14243a;color:var(--muted)}.add-profile-card .profile-avatar{color:var(--gold);font-size:36px}
+.switcher-note{color:var(--muted);font-size:11px;margin:12px 0 0}.top .select{display:none}
+@media(max-width:700px){.tabs{flex-wrap:wrap;overflow:visible;gap:6px}.tabs .tab{flex:1 1 calc(33.333% - 6px);padding:9px 7px;font-size:12px}.hero{grid-template-columns:1fr}.character{min-height:160px}.avatar{width:125px;height:125px}.grid{grid-template-columns:1fr}.statgrid{grid-template-columns:repeat(3,1fr)}.app{padding:13px 12px 90px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.top{align-items:flex-start}.brand b{font-size:14px}}
+@media(max-width:600px){.profile-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.profile-card{min-height:115px}}
 </style>
 </head>
 <body>
 <div class="app">
-<header class="top">
-  <div class="brand">
-    <div class="logo">🌱</div>
-    <div><b>REAL LIFE GROWTH <span style="color:var(--gold)">2.0</span></b><small>Every experience is an opportunity to grow</small></div>
-  </div>
-  <select class="select" id="profileSelect" aria-label="Choose child"></select>
-</header>
-
-<section class="family-switcher" aria-label="Family profiles">
-  <div class="switcher-head">
-    <h2>👨‍👩‍👦‍👦 Our Family Adventures</h2>
-    <span class="pill">Choose your journey</span>
-  </div>
-  <div class="profile-cards" id="profileCards"></div>
-  <p class="switcher-note">Every child has their own journey. Their progress, skills, activities and achievements are kept separate.</p>
-</section>
-
-<div class="hero">
- <div class="card hero-main">
-  <div class="eyebrow">Your adventure continues</div>
-  <h1 id="hello">Let's grow.</h1>
-  <p class="sub" id="heroSub">Every day is a chance to discover something new.</p>
-  <div class="levelrow"><div class="levelbadge" id="levelBadge">LEVEL 1</div><div class="progress"><i id="overallBar"></i></div></div>
-  <div class="tiny" id="overallText" style="margin-top:7px">0 XP earned</div>
- </div>
- <div class="card character">
-  <div class="avatar" id="avatar">🦁</div>
-  <div class="charname" id="charName">Your character</div>
-  <div class="charstage" id="charStage">Baby · Level 1</div>
- </div>
-</div>
-
-<nav class="tabs">
-<button type="button" class="tab active" data-tab="home" onclick="showTab('home')">Home</button>
-<button type="button" class="tab" data-tab="skills" onclick="showTab('skills')">Skills</button>
-<button type="button" class="tab" data-tab="activities" onclick="showTab('activities')">Activities</button>
-<button type="button" class="tab" data-tab="challenges" onclick="showTab('challenges')">Challenges</button>
-<button type="button" class="tab" data-tab="achievements" onclick="showTab('achievements')">Achievements</button>
-<button type="button" class="tab" data-tab="explore" onclick="showTab('explore')">Explore</button>
-<button type="button" class="tab" data-tab="parent" onclick="showTab('parent')">Parent</button>
-</nav>
-
-<section id="home" class="section active">
- <div class="statgrid">
-  <div class="stat"><b id="statXP">0</b><span>Overall XP</span></div>
-  <div class="stat"><b id="statSkills">28</b><span>Growing skills</span></div>
-  <div class="stat"><b id="statActivities">0</b><span>Activities</span></div>
- </div>
- <div class="grid">
-  <div class="card">
-   <div class="sectionhead"><h2>Skill growth</h2><button class="btn ghost" onclick="showTab('skills')">View all</button></div>
-   <div id="homeSkills"></div>
-  </div>
-  <div class="card">
-   <div class="sectionhead"><h2>Recent growth</h2><button class="btn ghost" onclick="showTab('activities')">History</button></div>
-   <div id="recentActivities"></div>
-   <div style="margin-top:12px"><button class="btn" onclick="openActivity()">＋ Add activity</button></div>
-  </div>
- </div>
- <div class="card" style="margin-top:14px">
-  <div class="sectionhead"><h2>Family growth snapshot</h2><span class="tag">Parent view</span></div>
-  <p class="sub" id="snapshot">Your child's journey is just beginning.</p>
- </div>
-</section>
-
-<section id="skills" class="section">
- <div class="sectionhead">
-  <div><h2>My skill chart</h2><div class="tiny">Your chart grows as you discover new interests.</div></div>
-  <button class="btn" onclick="openSkillPicker()">＋ Add skills</button>
- </div>
- <div class="card"><div class="sectionhead"><b id="skillCount">28 skills</b><span class="pill">No maximum</span></div><div id="skillList"></div></div>
-</section>
-
-<section id="activities" class="section">
- <div class="sectionhead">
-  <div><h2>Activity journal</h2><div class="tiny">Learning, watching, listening, practicing and participating all count.</div></div>
-  <button class="btn" onclick="openActivity()">＋ Record</button>
- </div>
- <div class="card"><div id="activityList"></div></div>
-</section>
-
-<section id="challenges" class="section">
- <div class="sectionhead"><div><h2>Optional challenges</h2><div class="tiny">Small invitations to try something new. Parent confirms completion.</div></div></div>
- <div id="challengeList" class="grid"></div>
-</section>
-
-<section id="achievements" class="section">
- <div class="sectionhead"><div><h2>Achievement collection</h2><div class="tiny">Celebrate meaningful milestones.</div></div></div>
- <div class="card"><div id="achievementList"></div></div>
-</section>
-
-<section id="explore" class="section">
- <div class="sectionhead">
-  <div><h2>Explore your potential</h2><div class="tiny">Parent-controlled resources and opportunities.</div></div>
-  <span class="pill">Parent managed</span>
- </div>
- <div class="notice">Resources are a prototype preview. In a production app, parents can approve video sources and local providers. Sponsored listings will always be clearly labeled.</div>
- <div class="grid" style="margin-top:12px">
-  <div class="card">
-   <h2>🎥 Skill videos</h2>
-   <p class="sub">Find instructional videos and drills connected to a child's interests.</p>
-   <div class="marketitem"><b>Baseball fundamentals</b><small style="display:block;color:var(--muted)">Batting · Fielding · Throwing</small><a href="https://www.youtube.com/results?search_query=youth+baseball+fundamentals+drills" target="_blank" rel="noopener" style="color:#8dc8ff">Find YouTube drills ↗</a></div>
-   <div class="marketitem"><b>Chess basics</b><small style="display:block;color:var(--muted)">Patterns · Strategy · Openings</small><a href="https://www.youtube.com/results?search_query=chess+lessons+for+kids" target="_blank" rel="noopener" style="color:#8dc8ff">Find lessons ↗</a></div>
-  </div>
-  <div class="card">
-   <h2>📍 Opportunity marketplace</h2>
-   <p class="sub">A parent-directed way to discover local programs.</p>
-   <div class="marketitem"><b>Local baseball instruction</b><small style="display:block;color:var(--muted)">Coaches, camps and training facilities</small><span class="tag">Sponsored opportunity concept</span></div>
-   <div class="marketitem"><b>Cooking classes</b><small style="display:block;color:var(--muted)">Family classes and youth programs</small><span class="tag">Sponsored opportunity concept</span></div>
-   <p class="tiny">No real advertisers or paid placements are connected in this prototype.</p>
-  </div>
- </div>
-</section>
-
-<section id="parent" class="section">
- <div class="sectionhead"><div><h2>Parent dashboard</h2><div class="tiny">Manage profiles, review activity and shape the experience.</div></div></div>
- <div class="grid">
-  <div class="card">
-   <h2>Family profiles</h2>
-   <div id="familyList"></div>
-   <button class="btn" onclick="addChild()">＋ Add child profile</button>
-   <button class="btn secondary" style="margin-top:9px" onclick="editChild()">Edit selected child</button>
-  </div>
-  <div class="card">
-   <h2>Progression rules</h2>
-   <button class="btn ghost" onclick="openOnboarding()">Skill setup / onboarding</button>
-   <p class="sub" style="margin-top:10px">Every child uses the same overall XP thresholds. Skill XP is separate and never determines overall level.</p>
-   <div class="tiny" id="thresholds"></div>
-   <hr style="border-color:var(--line);margin:14px 0">
-   <h2>Data controls</h2>
-   <button class="btn secondary" onclick="exportData()">Export family data</button>
-   <button class="btn ghost" onclick="resetDemo()">Reset demo</button>
-  </div>
- </div>
- <div class="card" style="margin-top:14px">
-  <h2>Activity review</h2>
-  <p class="tiny">Activities are parent-entered and approved in this prototype. XP is itemized and reversible if an activity is deleted.</p>
-  <div id="parentReview"></div>
- </div>
-</section>
-
-<div class="footer">Functional local prototype · Demo data stays in this browser on this device · Not yet a native iOS app</div>
-</div>
-
-<div class="modalback" id="modalBack">
- <div class="modal" id="modal">
-  <button class="close" onclick="closeModal()">✕</button>
-  <div id="modalContent"></div>
- </div>
-</div>
-<div class="toast" id="toast"></div>
-
+<header class="top"><div class="brand"><div class="logo">🌱</div><div><b>REAL LIFE GROWTH <span style="color:var(--gold)">2.0</span></b><small>Every experience is an opportunity to grow</small></div></div><select class="select" id="profileSelect" aria-label="Choose child"></select></header>
+<section class="family-switcher" aria-label="Family profiles"><div class="switcher-head"><h2>👨‍👩‍👦‍👦 Our Family Adventures</h2><span class="pill">Choose your journey</span></div><div class="profile-cards" id="profileCards"></div><p class="switcher-note">Every child has their own journey. Their progress, skills, activities and achievements are kept separate.</p></section>
+<div class="hero"><div class="card hero-main"><div class="eyebrow">Your adventure continues</div><h1 id="hello">Let's grow.</h1><p class="sub" id="heroSub">Every day is a chance to discover something new.</p><div class="levelrow"><div class="levelbadge" id="levelBadge">LEVEL 1</div><div class="progress"><i id="overallBar"></i></div></div><div class="tiny" id="overallText" style="margin-top:7px">0 XP earned</div></div><div class="card character"><div class="avatar" id="avatar">🦁</div><div class="charname" id="charName">Your character</div><div class="charstage" id="charStage">Baby · Level 1</div></div></div>
+<nav class="tabs"><button type="button" class="tab active" data-tab="home" onclick="showTab('home')">Home</button><button type="button" class="tab" data-tab="skills" onclick="showTab('skills')">Skills</button><button type="button" class="tab" data-tab="activities" onclick="showTab('activities')">Activities</button><button type="button" class="tab" data-tab="challenges" onclick="showTab('challenges')">Challenges</button><button type="button" class="tab" data-tab="achievements" onclick="showTab('achievements')">Achievements</button><button type="button" class="tab" data-tab="explore" onclick="showTab('explore')">Explore</button><button type="button" class="tab" data-tab="parent" onclick="showTab('parent')">Parent</button></nav>
+<section id="home" class="section active"><div class="statgrid"><div class="stat"><b id="statXP">0</b><span>Overall XP</span></div><div class="stat"><b id="statSkills">28</b><span>Growing skills</span></div><div class="stat"><b id="statActivities">0</b><span>Activities</span></div></div><div class="grid"><div class="card"><div class="sectionhead"><h2>Skill growth</h2><button class="btn ghost" onclick="showTab('skills')">View all</button></div><div id="homeSkills"></div></div><div class="card"><div class="sectionhead"><h2>Recent growth</h2><button class="btn ghost" onclick="showTab('activities')">History</button></div><div id="recentActivities"></div><div style="margin-top:12px"><button class="btn" onclick="openActivity()">＋ Add activity</button></div></div></div><div class="card" style="margin-top:14px"><div class="sectionhead"><h2>Family growth snapshot</h2><span class="tag">Parent view</span></div><p class="sub" id="snapshot">Your child's journey is just beginning.</p></div></section>
+<section id="skills" class="section"><div class="sectionhead"><div><h2>My skill chart</h2><div class="tiny">Your chart grows as you discover new interests.</div></div><button class="btn" onclick="openSkillPicker()">＋ Add skills</button></div><div class="card"><div class="sectionhead"><b id="skillCount">28 skills</b><span class="pill">No maximum</span></div><div id="skillList"></div></div></section>
+<section id="activities" class="section"><div class="sectionhead"><div><h2>Activity journal</h2><div class="tiny">Learning, watching, listening, practicing and participating all count.</div></div><button class="btn" onclick="openActivity()">＋ Record</button></div><div class="card"><div id="activityList"></div></div></section>
+<section id="challenges" class="section"><div class="sectionhead"><div><h2>Optional challenges</h2><div class="tiny">Small invitations to try something new. Parent confirms completion.</div></div></div><div id="challengeList" class="grid"></div></section>
+<section id="achievements" class="section"><div class="sectionhead"><div><h2>Achievement collection</h2><div class="tiny">Celebrate meaningful milestones.</div></div></div><div class="card"><div id="achievementList"></div></div></section>
+<section id="explore" class="section"><div class="sectionhead"><div><h2>Explore your potential</h2><div class="tiny">Parent-controlled resources and opportunities.</div></div><span class="pill">Parent managed</span></div><div class="notice">Resources are a prototype preview. In a production app, parents can approve video sources and local providers. Sponsored listings will always be clearly labeled.</div><div class="grid" style="margin-top:12px"><div class="card"><h2>🎥 Skill videos</h2><p class="sub">Find instructional videos and drills connected to a child's interests.</p><div class="marketitem"><b>Baseball fundamentals</b><small style="display:block;color:var(--muted)">Batting · Fielding · Throwing</small><a href="https://www.youtube.com/results?search_query=youth+baseball+fundamentals+drills" target="_blank" rel="noopener" style="color:#8dc8ff">Find YouTube drills ↗</a></div><div class="marketitem"><b>Chess basics</b><small style="display:block;color:var(--muted)">Patterns · Strategy · Openings</small><a href="https://www.youtube.com/results?search_query=chess+lessons+for+kids" target="_blank" rel="noopener" style="color:#8dc8ff">Find lessons ↗</a></div></div><div class="card"><h2>📍 Opportunity marketplace</h2><p class="sub">A parent-directed way to discover local programs.</p><div class="marketitem"><b>Local baseball instruction</b><small style="display:block;color:var(--muted)">Coaches, camps and training facilities</small><span class="tag">Sponsored opportunity concept</span></div><div class="marketitem"><b>Cooking classes</b><small style="display:block;color:var(--muted)">Family classes and youth programs</small><span class="tag">Sponsored opportunity concept</span></div><p class="tiny">No real advertisers or paid placements are connected in this prototype.</p></div></div></section>
+<section id="parent" class="section"><div class="sectionhead"><div><h2>Parent dashboard</h2><div class="tiny">Manage profiles, review activity and shape the experience.</div></div></div><div class="grid"><div class="card"><h2>Family profiles</h2><div id="familyList"></div><button class="btn" onclick="addChild()">＋ Add child profile</button><p class="tiny" style="margin-top:12px">Delete only the selected child and that child’s progress. This cannot be undone.</p><button class="btn ghost" style="margin-top:8px;border-color:#a85e68;color:#ffb3b3" onclick="deleteChild()">Delete selected character</button><button class="btn secondary" style="margin-top:9px" onclick="editChild()">Edit selected child</button></div><div class="card"><h2>Progression rules</h2><button class="btn ghost" onclick="openOnboarding()">Skill setup / onboarding</button><p class="sub" style="margin-top:10px">Every child uses the same overall XP thresholds. Skill XP is separate and never determines overall level.</p><div class="tiny" id="thresholds"></div><hr style="border-color:var(--line);margin:14px 0"><h2>Data controls</h2><button class="btn secondary" onclick="exportData()">Export family data</button><button class="btn ghost" onclick="resetDemo()">Reset demo</button></div></div><div class="card" style="margin-top:14px"><h2>Activity review</h2><p class="tiny">Activities are parent-entered and approved in this prototype. XP is itemized and reversible if an activity is deleted.</p><div id="parentReview"></div></div></section>
+<div class="footer">Functional local prototype · Demo data stays in this browser on this device · Not yet a native iOS app</div></div>
+<div class="modalback" id="modalBack"><div class="modal" id="modal"><button class="close" onclick="closeModal()">✕</button><div id="modalContent"></div></div></div><div class="toast" id="toast"></div>
 <script>
-const BASE = ["Baseball","Basketball","Football","Soccer","Golf","Bowling","Reading","Writing","Mathematics","Drawing","Building","Designing","God Relationship","Family Relationship","Friend Relationships","Creativity","Cooking","Responsibility","Running / Speed","Strength","Toughness","Mental Strength","Discipline","Chess","Critical Thinking","Music","Nutrition / Healthy Choices","Spanish / Language"];
-const EXTRA = ["Swimming","Tennis","Volleyball","Pickleball","Track & Field","Dance","Gymnastics","Martial Arts","Skating","Cycling","Hiking","Camping","Fishing","Gardening","Science","Nature Knowledge","History","Geography","Public Speaking","Communication","Leadership","Teamwork","Empathy","Kindness","Patience","Problem Solving","Memory","Focus","Time Management","Organization","Financial Literacy","Entrepreneurship","Technology","Coding","Photography","Video Production","Animation","Crafts","Sculpting","Painting","Sewing","Woodworking","Robotics","Engineering","Astronomy","Animal Care","Pet Training","First Aid","Safety Awareness","Mindfulness","Prayer","Community Service","Volunteering","Household Skills","Laundry","Cleaning","Car Care","Home Repair","Baking","Food Preparation","Table Setting","Outdoor Skills","Archery","Table Tennis","Badminton","Rugby","Lacrosse","Hockey","Softball","Baseball Strategy","Basketball Strategy","Football Strategy","Soccer Strategy","Golf Strategy","Chess Strategy","Reading Comprehension","Research","Spelling","Grammar","Foreign Languages","Sign Language","Acting","Theater","Singing","Instrument Practice","Songwriting","Fashion Design","Interior Design","Digital Design","Debate","Negotiation","Conflict Resolution","Self-Advocacy","Resilience","Goal Setting","Sportsmanship","Balance & Coordination","Agility","Flexibility"];
+const BASE=["Baseball","Basketball","Football","Soccer","Golf","Bowling","Reading","Writing","Mathematics","Drawing","Building","Designing","God Relationship","Family Relationship","Friend Relationships","Creativity","Cooking","Responsibility","Running / Speed","Strength","Toughness","Mental Strength","Discipline","Chess","Critical Thinking","Music","Nutrition / Healthy Choices","Spanish / Language"];
+const EXTRA=["Swimming","Tennis","Volleyball","Pickleball","Track & Field","Dance","Gymnastics","Martial Arts","Skating","Cycling","Hiking","Camping","Fishing","Gardening","Science","Nature Knowledge","History","Geography","Public Speaking","Communication","Leadership","Teamwork","Empathy","Kindness","Patience","Problem Solving","Memory","Focus","Time Management","Organization","Financial Literacy","Entrepreneurship","Technology","Coding","Photography","Video Production","Animation","Crafts","Sculpting","Painting","Sewing","Woodworking","Robotics","Engineering","Astronomy","Animal Care","Pet Training","First Aid","Safety Awareness","Mindfulness","Prayer","Community Service","Volunteering","Household Skills","Laundry","Cleaning","Car Care","Home Repair","Baking","Food Preparation","Table Setting","Outdoor Skills","Archery","Table Tennis","Badminton","Rugby","Lacrosse","Hockey","Softball","Baseball Strategy","Basketball Strategy","Football Strategy","Soccer Strategy","Golf Strategy","Chess Strategy","Reading Comprehension","Research","Spelling","Grammar","Foreign Languages","Sign Language","Acting","Theater","Singing","Instrument Practice","Songwriting","Fashion Design","Interior Design","Digital Design","Debate","Negotiation","Conflict Resolution","Self-Advocacy","Resilience","Goal Setting","Sportsmanship","Balance & Coordination","Agility","Flexibility","Following Directions","Helping","Mental Math","Bible Knowledge","Faith","Self-Control","Courage","Perseverance"];
 const ALL=[...new Set([...BASE,...EXTRA])].sort((a,b)=>a.localeCompare(b));
 const THRESHOLDS=[0,100,250,450,700,1000,1400,1850,2350,2900,3500,4150,4850,5600,6400,7250,8150,9100,10100,11200,12400,13700,15100,16600,18200,19900,21700,23600,25600,27700,29900];
 const CHARS={lion:"🦁",tiger:"🐯",wolf:"🐺",bear:"🐻",dragon:"🐉",boy:"🧒",girl:"👧"};
 const STAGES=[["Baby",1],["Growing baby",3],["Little adventurer",6],["Young explorer",11],["Hero in training",16],["Superhero",21],["Champion hero",26]];
 const ACH=[["first","🌱","First Steps","Record your first real-life activity."],["five","⭐","Curious Explorer","Record 5 activities."],["ten","🏅","Growing Every Day","Record 10 activities."],["skills","🌈","Many Paths","Grow 10 different skills."],["level3","🛡️","Level 3","Reach overall Level 3."],["level5","🏆","Rising Hero","Reach overall Level 5."],["level21","🦸","Superhero Awakening","Reach Level 21."]];
 const CHALLENGES=[["⚾","Baseball observer","Watch a game and notice one defensive strategy.","Baseball"],["📚","Reading adventure","Read for 15 minutes and share one thing you learned.","Reading"],["🍳","Kitchen helper","Help prepare one part of a family meal.","Cooking"],["♟️","Think ahead","Play a chess game and explain one decision.","Chess"],["🎨","Create something","Draw, design or build something original.","Creativity"],["💛","Family moment","Do something thoughtful for someone in your family.","Family Relationship"]];
-
-const defaultState=()=>({
- children:[
-  {id:"kid1",name:"Michael",character:"lion",skills:[...BASE],xp:0,skillXP:{},activities:[],achievements:[],challenges:[]},
-  {id:"kid2",name:"JD",character:"lion",xp:0,skills:[...BASE],skillXP:{},activities:[],achievements:[],challenges:[]}
- ],
- active:"kid1",
- onboarded:true
-});
-
-let state;
-try{state=JSON.parse(localStorage.getItem("rlg20_state"))||defaultState()}
-catch(e){state=defaultState()}
-
+const defaultState=()=>({children:[{id:"kid1",name:"Michael",character:"lion",skills:[...BASE],xp:0,skillXP:{},activities:[],achievements:[],challenges:[]},{id:"kid2",name:"JD",character:"lion",xp:0,skills:[...BASE],skillXP:{},activities:[],achievements:[],challenges:[]}],active:"kid1",onboarded:true});
+let state;try{state=JSON.parse(localStorage.getItem("rlg20_state"))||defaultState()}catch(e){state=defaultState()}
 function normalizeState(raw){
- const base=defaultState();
- if(!raw || typeof raw!=="object") return base;
+ const base=defaultState();if(!raw||typeof raw!=="object")return base;
  const children=Array.isArray(raw.children)?raw.children:[];
- base.children=children.map((x,i)=>({
-  ...x,
-  id:String(x.id||("kid"+(i+1))),
-  name:String(x.name||("Child "+(i+1))),
-  character:CHARS[x.character]?x.character:"lion",
-  skills:Array.isArray(x.skills)?[...new Set(x.skills.filter(v=>typeof v==="string"))]:[...BASE],
-  xp:Number.isFinite(Number(x.xp))?Math.max(0,Number(x.xp)):0,
-  skillXP:x.skillXP&&typeof x.skillXP==="object"?x.skillXP:{},
-  activities:Array.isArray(x.activities)?x.activities:[],
-  achievements:Array.isArray(x.achievements)?x.achievements:[],
-  challenges:Array.isArray(x.challenges)?x.challenges:[]
- }));
- if(!base.children.length) base.children=defaultState().children;
- base.active=base.children.some(x=>x.id===raw.active)?raw.active:base.children[0].id;
- base.onboarded=raw.onboarded!==false;
- return base;
+ base.children=children.map((x,i)=>({...x,id:String(x.id||("kid"+(i+1))),name:String(x.name||("Child "+(i+1))),character:CHARS[x.character]?x.character:"lion",skills:Array.isArray(x.skills)?[...new Set(x.skills.filter(v=>typeof v==="string"))]:[...BASE],xp:Number.isFinite(Number(x.xp))?Math.max(0,Number(x.xp)):0,skillXP:x.skillXP&&typeof x.skillXP==="object"?x.skillXP:{},activities:Array.isArray(x.activities)?x.activities:[],achievements:Array.isArray(x.achievements)?x.achievements:[],challenges:Array.isArray(x.challenges)?x.challenges:[]}));
+ if(!base.children.length)base.children=defaultState().children;
+ base.active=base.children.some(x=>x.id===raw.active)?raw.active:base.children[0].id;base.onboarded=raw.onboarded!==false;return base;
 }
 state=normalizeState(state);
-
 function save(){localStorage.setItem("rlg20_state",JSON.stringify(state))}
 function child(){return state.children.find(c=>c.id===state.active)||state.children[0]}
 function levelFor(xp){let n=1;for(let i=0;i<THRESHOLDS.length;i++){if(xp>=THRESHOLDS[i])n=i+1;else break}return n}
 function nextThreshold(l){return THRESHOLDS[Math.min(l,THRESHOLDS.length-1)]??(THRESHOLDS.at(-1)+((l-THRESHOLDS.length+2)*2500))}
 function prevThreshold(l){return THRESHOLDS[Math.min(l-1,THRESHOLDS.length-1)]??THRESHOLDS.at(-1)}
 function stage(l){let s=STAGES[0][0];for(const [name,min] of STAGES)if(l>=min)s=name;return s}
-function charEmoji(c,l){
- let base=CHARS[c]||"🦁";
- if(l>=21)return c==="boy"||c==="girl"?"🦸":({lion:"🦁",tiger:"🐯",wolf:"🐺",bear:"🐻",dragon:"🐉"}[c]||base)+"‍🦸";
- if(l>=11)return c==="boy"?"🧑‍🚀":c==="girl"?"👩‍🚀":base;
- if(l>=6)return c==="boy"?"🧒":c==="girl"?"👧":base;
- return c==="boy"?"👶":c==="girl"?"👶":base;
+function charEmoji(c,l){let base=CHARS[c]||"🦁";if(l>=21)return c==="boy"||c==="girl"?"🦸":({lion:"🦁",tiger:"🐯",wolf:"🐺",bear:"🐻",dragon:"🐉"}[c]||base)+"‍🦸";if(l>=11)return c==="boy"?"🧑‍🚀":c==="girl"?"👩‍🚀":base;if(l>=6)return c==="boy"?"🧒":c==="girl"?"👧":base;return c==="boy"||c==="girl"?"👶":base}
+function characterImage(c,l){
+ const palette=["#e9ad55","#59b7a8","#7199df","#b77bd6","#e17c83","#72b6dc","#9abf69"],color=palette[(l-1)%palette.length];
+ const face=c==="boy"||c==="girl"?"#f0c49b":({lion:"#d69a43",tiger:"#e58a36",wolf:"#9aa8b7",bear:"#9a704e",dragon:"#6eaf87"}[c]||"#d69a43");
+ const ears=c==="dragon"?'<path d="M48 52 L35 20 L66 39 M112 52 L126 20 L96 39" fill="'+face+'" stroke="#573b32" stroke-width="4"/>':'<circle cx="51" cy="48" r="17" fill="'+face+'" stroke="#573b32" stroke-width="4"/><circle cx="109" cy="48" r="17" fill="'+face+'" stroke="#573b32" stroke-width="4"/>';
+ const outfit='<path d="M35 145 Q80 115 125 145 L143 190 L17 190Z" fill="'+(l>=21?"#d94343":color)+'" stroke="#26384d" stroke-width="4"/>';
+ const hat=l>=21?'<path d="M42 49 Q80 7 118 49 L110 58 Q80 35 50 58Z" fill="#e84a4a" stroke="#6f2525" stroke-width="4"/>':l>=11?'<path d="M42 54 Q80 17 118 54 L112 65 Q80 42 48 65Z" fill="#526c9c" stroke="#26384d" stroke-width="4"/>':l>=6?'<path d="M47 43 Q80 15 113 43 L108 52 Q80 34 52 52Z" fill="#f1d36a" stroke="#785b28" stroke-width="3"/>':"";
+ const stars=Array.from({length:Math.min(5,Math.floor((l-1)/4)+1)},(_,i)=>'<circle cx="'+(24+i*27)+'" cy="24" r="4" fill="#ffe18a"/>').join("");
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200"><defs><linearGradient id="g" x2="0" y2="1"><stop stop-color="#547b9d"/><stop offset="1" stop-color="#1a2e49"/></linearGradient></defs><circle cx="80" cy="100" r="77" fill="url(#g)"/>'+stars+outfit+ears+'<circle cx="80" cy="76" r="43" fill="'+face+'" stroke="#573b32" stroke-width="4"/><ellipse cx="65" cy="77" rx="4" ry="6" fill="#26384d"/><ellipse cx="95" cy="77" rx="4" ry="6" fill="#26384d"/><path d="M69 96 Q80 106 91 96" fill="none" stroke="#573b32" stroke-width="4" stroke-linecap="round"/>'+hat+'<text x="80" y="185" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="white">LEVEL '+l+'</text></svg>';
+ return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
 }
 function toast(t){let el=document.getElementById("toast");el.textContent=t;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2600)}
-
-function showTab(t){
- const target=document.getElementById(t);
- if(!target || !target.classList.contains("section")) return;
- document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===t));
- document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.id===t));
- try{window.scrollTo(0,0)}catch(e){}
-}
-
+function showTab(t){const target=document.getElementById(t);if(!target||!target.classList.contains("section"))return;document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===t));document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.id===t));try{window.scrollTo(0,0)}catch(e){}}
 function render(){
- let c=child(),l=levelFor(c.xp),next=nextThreshold(l),prev=prevThreshold(l);
- let pct=l>=THRESHOLDS.length?100:Math.max(0,Math.min(100,(c.xp-prev)/(next-prev)*100));
-
- document.getElementById("profileSelect").innerHTML=state.children.map(x=>`<option value="${x.id}" ${x.id===c.id?"selected":""}>${esc(x.name)}</option>`).join("");
- renderProfileCards();
-
- document.getElementById("hello").textContent=`Keep growing, ${c.name}!`;
- document.getElementById("heroSub").textContent=`${stage(l)} · Every experience helps you grow.`;
- document.getElementById("levelBadge").textContent=`LEVEL ${l}`;
- document.getElementById("overallBar").style.width=pct+"%";
+ let c=child(),l=levelFor(c.xp),next=nextThreshold(l),prev=prevThreshold(l),pct=l>=THRESHOLDS.length?100:Math.max(0,Math.min(100,(c.xp-prev)/(next-prev)*100));
+ document.getElementById("profileSelect").innerHTML=state.children.map(x=>`<option value="${x.id}" ${x.id===c.id?"selected":""}>${esc(x.name)}</option>`).join("");renderProfileCards();
+ document.getElementById("hello").textContent=`Keep growing, ${c.name}!`;document.getElementById("heroSub").textContent=`${stage(l)} · Every experience helps you grow.`;
+ document.getElementById("levelBadge").textContent=`LEVEL ${l}`;document.getElementById("overallBar").style.width=pct+"%";
  document.getElementById("overallText").textContent=l>=THRESHOLDS.length?`${c.xp.toLocaleString()} XP · Maximum demo level reached`:`${c.xp.toLocaleString()} XP · ${Math.max(0,next-c.xp).toLocaleString()} XP to Level ${l+1}`;
- document.getElementById("avatar").textContent=charEmoji(c.character,l);
- document.getElementById("charName").textContent=`${c.name}'s ${c.character==="boy"||c.character==="girl"?"hero":c.character}`;
- document.getElementById("charStage").textContent=`${stage(l)} · Level ${l}`;
- document.getElementById("statXP").textContent=c.xp.toLocaleString();
- document.getElementById("statSkills").textContent=c.skills.length;
- document.getElementById("statActivities").textContent=c.activities.length;
- document.getElementById("skillCount").textContent=`${c.skills.length} growing skills`;
- document.getElementById("homeSkills").innerHTML=skillMarkup(c,5);
- document.getElementById("skillList").innerHTML=skillMarkup(c);
- document.getElementById("recentActivities").innerHTML=activityMarkup(c,4)||'<div class="empty">Your first activity is waiting.</div>';
+ document.getElementById("avatar").innerHTML='<img src="'+characterImage(c.character,l)+'" alt="'+esc(c.name)+' character at level '+l+'">';
+ document.getElementById("charName").textContent=`${c.name}'s ${c.character==="boy"||c.character==="girl"?"hero":c.character}`;document.getElementById("charStage").textContent=`${stage(l)} · Level ${l}`;
+ document.getElementById("statXP").textContent=c.xp.toLocaleString();document.getElementById("statSkills").textContent=c.skills.length;document.getElementById("statActivities").textContent=c.activities.length;document.getElementById("skillCount").textContent=`${c.skills.length} growing skills`;
+ document.getElementById("homeSkills").innerHTML=skillMarkup(c,5);document.getElementById("skillList").innerHTML=skillMarkup(c);document.getElementById("recentActivities").innerHTML=activityMarkup(c,4)||'<div class="empty">Your first activity is waiting.</div>';
  document.getElementById("activityList").innerHTML=activityMarkup(c)||'<div class="empty">No activities yet. Add one to begin!</div>';
  document.getElementById("snapshot").textContent=`${c.name} has recorded ${c.activities.length} activities, earned ${c.xp} overall XP and is developing ${c.skills.length} skills. Their current stage is ${stage(l).toLowerCase()}.`;
  document.getElementById("familyList").innerHTML=state.children.map(x=>`<div class="activity"><div class="ico">${charEmoji(x.character,levelFor(x.xp))}</div><div><b>${esc(x.name)}</b><small>Level ${levelFor(x.xp)} · ${x.xp} overall XP · ${x.skills.length} skills</small></div></div>`).join("");
  document.getElementById("thresholds").innerHTML=THRESHOLDS.slice(0,10).map((v,i)=>`Level ${i+1}: ${v} XP`).join(" · ")+" · thresholds are shared by every child.";
- document.getElementById("parentReview").innerHTML=c.activities.length?activityMarkup(c,true):'<div class="empty">No activities to review.</div>';
- renderChallenges(c);
- renderAchievements(c);
+ document.getElementById("parentReview").innerHTML=c.activities.length?activityMarkup(c,true):'<div class="empty">No activities to review.</div>';renderChallenges(c);renderAchievements(c);
 }
-
 function renderProfileCards(){
- const host=document.getElementById("profileCards");
- if(!host)return;
-
- host.innerHTML=state.children.map(x=>{
-  const level=levelFor(x.xp);
-  const active=x.id===state.active;
-  return `
-   <button type="button" class="profile-card ${active?"active":""}" onclick="selectChild('${esc(x.id)}')" aria-pressed="${active}">
-    ${active?'<span class="profile-check">✓</span>':""}
-    <div class="profile-avatar">${charEmoji(x.character,level)}</div>
-    <span class="profile-name">${esc(x.name)}</span>
-    <span class="profile-details">Level ${level} · ${x.xp.toLocaleString()} XP</span>
-   </button>
-  `;
- }).join("")+`
-  <button type="button" class="profile-card add-profile-card" onclick="addChild()">
-   <div class="profile-avatar">＋</div>
-   <span class="profile-name">Add Character</span>
-   <span class="profile-details">Start a new adventure</span>
-  </button>
- `;
+ const host=document.getElementById("profileCards");if(!host)return;
+ host.innerHTML=state.children.map(x=>{const level=levelFor(x.xp),active=x.id===state.active;return `<button type="button" class="profile-card ${active?"active":""}" onclick="selectChild('${esc(x.id)}')" aria-pressed="${active}">${active?'<span class="profile-check">✓</span>':""}<div class="profile-avatar">${charEmoji(x.character,level)}</div><span class="profile-name">${esc(x.name)}</span><span class="profile-details">Level ${level} · ${x.xp.toLocaleString()} XP</span></button>`}).join("")+`<button type="button" class="profile-card add-profile-card" onclick="addChild()"><div class="profile-avatar">＋</div><span class="profile-name">Add Character</span><span class="profile-details">Start a new adventure</span></button>`;
 }
-
-function selectChild(id){
- if(!state.children.some(x=>x.id===id))return;
- state.active=id;
- save();
- render();
- const selected=child();
- toast(`${selected.name}'s adventure loaded!`);
-}
-
+function selectChild(id){if(!state.children.some(x=>x.id===id))return;state.active=id;save();render();toast(`${child().name}'s adventure loaded!`)}
 document.getElementById("profileSelect").addEventListener("change",e=>{state.active=e.target.value;save();render()});
-
-function esc(s){
- return String(s).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
-}
-
+function esc(s){return String(s).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]))}
 function skillMarkup(c,limit=999){
- return c.skills.slice().sort((a,b)=>(c.skillXP[b]||0)-(c.skillXP[a]||0)).slice(0,limit).map(s=>{
-  let xp=c.skillXP[s]||0,lv=levelFor(xp),lo=prevThreshold(lv),hi=nextThreshold(lv),p=Math.min(100,(xp-lo)/(hi-lo)*100);
-  return `<div class="skill"><div class="skilltop"><span class="skillname">${skillIcon(s)} ${esc(s)}</span><span class="skillxp">Lv ${lv} · ${xp} XP</span></div><div class="skillbar"><i style="width:${p}%"></i></div><div class="skillmeta"><span>Level ${lv}</span><span>${Math.max(0,hi-xp)} XP to next</span></div></div>`;
- }).join("")||'<div class="empty">No skills selected.</div>';
+ return c.skills.slice().sort((a,b)=>(c.skillXP[b]||0)-(c.skillXP[a]||0)).slice(0,limit).map(s=>{let xp=c.skillXP[s]||0,lv=levelFor(xp),lo=prevThreshold(lv),hi=nextThreshold(lv),p=Math.min(100,(xp-lo)/(hi-lo)*100);return `<div class="skill"><div class="skilltop"><span class="skillname">${skillIcon(s)} ${esc(s)}</span><span class="skillxp">Lv ${lv} · ${xp} XP</span></div><div class="skillbar"><i style="width:${p}%"></i></div><div class="skillmeta"><span>Level ${lv}</span><span>${Math.max(0,hi-xp)} XP to next</span></div></div>`}).join("")||'<div class="empty">No skills selected.</div>';
 }
-
-function skillIcon(s){
- let m={Baseball:"⚾",Basketball:"🏀",Football:"🏈",Soccer:"⚽",Golf:"⛳",Bowling:"🎳",Reading:"📚",Writing:"✍️",Mathematics:"🔢",Drawing:"🎨",Building:"🧱",Designing:"🖌️",Cooking:"🍳",Chess:"♟️",Music:"🎵",Creativity:"💡",Responsibility:"🧹",Strength:"💪",Discipline:"🎯"};
- return m[s]||"✨";
-}
-
+function skillIcon(s){let m={Baseball:"⚾",Basketball:"🏀",Football:"🏈",Soccer:"⚽",Golf:"⛳",Bowling:"🎳",Reading:"📚",Writing:"✍️",Mathematics:"🔢",Drawing:"🎨",Building:"🧱",Designing:"🖌️",Cooking:"🍳",Chess:"♟️",Music:"🎵",Creativity:"💡",Responsibility:"🧹",Strength:"💪",Discipline:"🎯", "God Relationship":"✝️","Running / Speed":"🏃",Teamwork:"🤝",Coordination:"⚖️",Endurance:"❤️",Sportsmanship:"🏅"};return m[s]||"✨"}
 function activityMarkup(c,parent=false){
  return c.activities.slice().reverse().map(a=>`<div class="activity"><div class="ico">${a.kind==="Watching"?"👀":a.kind==="Reading"?"📖":a.kind==="Listening"?"🎧":a.kind==="Practicing"?"🏃":"🌟"}</div><div style="min-width:0;flex:1"><b>${esc(a.title)}</b><small>${esc(a.kind)} · ${a.minutes} min · ${a.skills.map(esc).join(", ")}</small>${parent?`<small style="display:block;color:var(--mint)">Overall +${a.overall} XP · Skill XP: ${a.skills.map(s=>`${esc(s)} +${a.skillAwards[s]||0}`).join(", ")}</small>`:""}</div><div class="earned">+${a.overall} XP</div>${parent?`<button class="btn ghost" style="padding:6px 9px" onclick="deleteActivity('${a.id}')">Delete</button>`:""}</div>`).join("");
 }
-
 function openActivity(){
  let c=child();
- document.getElementById("modalContent").innerHTML=`<h2>Record a real-life activity</h2><p class="sub">Tell us what happened. The analyzer suggests skills; a parent confirms before XP is awarded.</p><div class="formgrid"><div class="field full"><label>What did ${esc(c.name)} do?</label><input id="actTitle" placeholder="e.g. Watched the Astros game and noticed defensive shifts"></div><div class="field"><label>How did they engage?</label><select id="actKind"><option>Watching</option><option>Reading</option><option>Listening</option><option>Practicing</option><option>Participating</option><option>Creating</option><option>Helping</option></select></div><div class="field"><label>Minutes spent</label><input id="actMinutes" type="number" min="1" max="600" value="30"></div><div class="field full"><label>Skills suggested (you can change these)</label><div id="suggestedSkills" class="chips"></div><div class="tiny" style="margin-top:6px">Suggestions are based on the description. Select every meaningful skill connection.</div></div><div class="field full"><label>Parent note (optional)</label><textarea id="actNote" placeholder="What did they learn, notice or practice?"></textarea></div></div><div style="display:flex;gap:9px;margin-top:16px"><button class="btn" onclick="approveActivity()">Approve & award XP</button><button class="btn secondary" onclick="closeModal()">Cancel</button></div>`;
- document.getElementById("actTitle").addEventListener("input",suggestSkills);
- document.getElementById("actKind").addEventListener("change",suggestSkills);
- suggestSkills();
- openModal();
+ document.getElementById("modalContent").innerHTML=`<h2>Record a real-life activity</h2><p class="sub">The app suggests connected skills. A parent reviews the suggestions before XP is awarded.</p><div class="formgrid"><div class="field full"><label>What did ${esc(c.name)} do?</label><input id="actTitle" placeholder="e.g. Read a baseball book about God"></div><div class="field"><label>How did they engage?</label><select id="actKind"><option>Watching</option><option>Reading</option><option>Listening</option><option>Practicing</option><option>Participating</option><option>Creating</option><option>Helping</option></select></div><div class="field"><label>Minutes spent</label><input id="actMinutes" type="number" min="1" max="600" value="30"></div><div class="field full"><label>Skills suggested (select or deselect)</label><div id="suggestedSkills" class="chips"></div><div class="tiny" style="margin-top:6px">One activity can build several skills. Review what was genuinely practiced, learned or supported.</div><div style="display:flex;gap:8px;margin-top:9px"><input id="newActivitySkill" placeholder="Skill not listed? Add one…" style="flex:1;min-width:0;background:#0e1b2d;color:white;border:1px solid var(--line);border-radius:10px;padding:10px"><button type="button" class="btn secondary" onclick="addActivitySkill()">Add skill</button></div></div><div class="field full"><label>Parent note (optional)</label><textarea id="actNote" placeholder="What did they learn, notice or practice?"></textarea></div></div><div style="display:flex;gap:9px;margin-top:16px"><button class="btn" onclick="approveActivity()">Approve & award XP</button><button class="btn secondary" onclick="closeModal()">Cancel</button></div>`;
+ document.getElementById("actTitle").addEventListener("input",suggestSkills);document.getElementById("actKind").addEventListener("change",suggestSkills);suggestSkills();openModal();
 }
-
+function analyzeActivitySkills(raw,kind){
+ const t=raw.toLowerCase(),found=new Set(),add=(...x)=>x.forEach(v=>found.add(v)),has=r=>r.test(t);
+ const sports=[
+  [/baseball|astros|mlb|little league|batting|pitching|fielding|base hit|catcher|shortstop|outfield/,"Baseball",["Coordination","Focus","Teamwork","Sportsmanship","Baseball Strategy","Running / Speed","Strength"]],
+  [/basketball|hoop|nba|dribble|free throw|layup|rebound/,"Basketball",["Coordination","Running / Speed","Endurance","Teamwork","Sportsmanship","Focus","Strength"]],
+  [/football|touchdown|quarterback|tackle|route running|football practice/,"Football",["Strength","Running / Speed","Coordination","Teamwork","Discipline","Focus","Agility"]],
+  [/soccer|goalie|soccer ball|penalty kick/,"Soccer",["Coordination","Running / Speed","Endurance","Teamwork","Sportsmanship","Agility"]],
+  [/golf|putt|driving range|golf swing/,"Golf",["Coordination","Focus","Patience","Discipline","Golf Strategy"]],
+  [/tennis|pickleball|volleyball|softball|swimming|track|gymnastics/,"",["Coordination","Running / Speed","Endurance","Focus","Agility"]]
+ ];
+ let sport=false;
+ sports.forEach(([re,name,extras])=>{if(re.test(t)){sport=true;if(name)add(name);if(["Practicing","Participating","Helping"].includes(kind))add(...extras);else if(name)add(name+" Strategy")}});
+ if(has(/book|read|reading|chapter|novel|story/)||kind==="Reading")add("Reading");
+ if(has(/bible|scripture|god|jesus|prayer|church|faith|devotional/))add("God Relationship","Faith");
+ if(has(/bible|scripture/))add("Reading Comprehension","Bible Knowledge");
+ if(has(/write|journal|essay/))add("Writing");
+ if(has(/math|addition|fraction|multiplication|calculate/))add("Mathematics","Problem Solving","Critical Thinking");
+ if(has(/draw|paint|sketch|coloring/))add("Drawing","Creativity");
+ if(has(/build|lego|construct|model/))add("Building","Creativity","Problem Solving","Engineering");
+ if(has(/cook|bake|recipe|meal|dinner|chop|stir/))add("Cooking","Food Preparation","Mathematics","Following Directions","Responsibility");
+ if(has(/chess/))add("Chess","Chess Strategy","Critical Thinking","Focus","Patience","Problem Solving");
+ if(has(/music|piano|guitar|sing|instrument/))add("Music","Creativity","Memory","Discipline");
+ if(has(/friend|kindness|playdate|share/))add("Friend Relationships","Empathy","Communication");
+ if(has(/family|grandma|brother|sister|parent/))add("Family Relationship","Communication","Empathy");
+ if(has(/clean|chores|responsibility|helping|helped|volunteer|laundry/))add("Responsibility","Helping","Organization","Discipline");
+ if(has(/run|sprint|race|jog/))add("Running / Speed","Endurance","Mental Strength");
+ if(has(/workout|push.?up|weights|lift|strength/))add("Strength","Discipline","Toughness");
+ if(has(/spanish|language|translate|vocabulary/))add("Spanish / Language","Memory","Communication");
+ if(has(/science|experiment|observe|hypothesis/))add("Science","Critical Thinking","Problem Solving");
+ if(sport&&["Watching","Listening","Reading"].includes(kind))add("Focus");
+ if(!found.size&&t.trim())add("Creativity");
+ return [...found].filter(x=>ALL.includes(x)||child().skills.includes(x));
+}
 function suggestSkills(){
- let title=document.getElementById("actTitle").value.toLowerCase(),kind=document.getElementById("actKind").value;
- let map=[[/baseball|astros|batting|pitch|fielding|base hit/,"Baseball"],[/basketball|hoop|nba|dribble/,"Basketball"],[/football|touchdown|quarterback/,"Football"],[/soccer|goalie|kick a ball/,"Soccer"],[/golf|putt|driving range/,"Golf"],[/bowling/,"Bowling"],[/book|read|chapter|novel/,"Reading"],[/write|journal|story|essay/,"Writing"],[/math|addition|fraction|multiplication/,"Mathematics"],[/draw|paint|sketch/,"Drawing"],[/build|lego|construct/,"Building"],[/design/,"Designing"],[/cook|bake|recipe|meal/,"Cooking"],[/chess/,"Chess"],[/music|piano|guitar|sing/,"Music"],[/friend|kindness|playdate/,"Friend Relationships"],[/family|grandma|brother|sister/,"Family Relationship"],[/clean|chores|responsibility|helping/,"Responsibility"],[/run|sprint|race/,"Running / Speed"],[/workout|push.?up|strength/,"Strength"],[/spanish|language/,"Spanish / Language"],[/science|experiment/,"Critical Thinking"]];
- let found=new Set();
- map.forEach(([re,s])=>{if(re.test(title))found.add(s)});
- if(kind==="Reading"&&!found.size)found.add("Reading");
- if(kind==="Practicing"&&/baseball|basketball|soccer|football|golf|tennis/.test(title)){}
- if(!found.size&&title.trim())found.add("Creativity");
- window.suggested=[...found];
- document.getElementById("suggestedSkills").innerHTML=[...new Set([...found,...child().skills.filter(s=>found.has(s))])].map(s=>`<button type="button" class="chip selected" data-skill="${esc(s)}" onclick="this.classList.toggle('selected')">${skillIcon(s)} ${esc(s)}</button>`).join("")||'<span class="tiny">Describe the activity to see suggestions.</span>';
+ const found=analyzeActivitySkills(document.getElementById("actTitle").value,document.getElementById("actKind").value);
+ document.getElementById("suggestedSkills").innerHTML=found.map(x=>'<button type="button" class="chip selected" data-skill="'+esc(x)+'" onclick="this.classList.toggle(\\'selected\\')">'+skillIcon(x)+' '+esc(x)+'</button>').join("")||'<span class="tiny">Describe the activity to see suggestions.</span>';
 }
-
+function addActivitySkill(){
+ const input=document.getElementById("newActivitySkill"),name=input.value.trim();if(!name)return;
+ const box=document.getElementById("suggestedSkills");
+ if(![...box.querySelectorAll(".chip")].some(x=>x.dataset.skill.toLowerCase()===name.toLowerCase())){
+  if(box.querySelector(".tiny"))box.innerHTML="";
+  box.insertAdjacentHTML("beforeend",'<button type="button" class="chip selected" data-skill="'+esc(name)+'" onclick="this.classList.toggle(\\'selected\\')">'+skillIcon(name)+' '+esc(name)+' <small>new skill</small></button>');
+ }
+ input.value="";
+}
 function approveActivity(){
  let c=child(),title=document.getElementById("actTitle").value.trim(),minutes=Math.max(1,Math.min(600,Number(document.getElementById("actMinutes").value)||1)),kind=document.getElementById("actKind").value;
  if(!title){toast("Add an activity description first.");return}
  let skills=[...document.querySelectorAll("#suggestedSkills .chip.selected")].map(x=>x.dataset.skill);
  if(!skills.length){toast("Select at least one skill.");return}
- let overall=Math.round(8+minutes/10),perSkill=Math.max(2,Math.round((5+minutes/12)*(kind==="Watching"||kind==="Listening"||kind==="Reading"?.85:1)));
- let awards={};
+ let overall=Math.round(8+minutes/10),perSkill=Math.max(2,Math.round((5+minutes/12)*(["Watching","Listening","Reading"].includes(kind)?.85:1))),awards={};
  skills.forEach(s=>{awards[s]=perSkill;if(!c.skills.includes(s))c.skills.push(s);c.skillXP[s]=(c.skillXP[s]||0)+perSkill});
- let oldLevel=levelFor(c.xp);
- let a={id:"a"+Date.now(),title,kind,minutes,skills,overall,skillAwards:awards,note:document.getElementById("actNote").value,date:new Date().toISOString()};
- c.activities.push(a);
- c.xp+=overall;
- let newLevel=levelFor(c.xp);
- save();closeModal();render();
- let unlocked=checkAchievements(c);
- if(newLevel>oldLevel){celebrate(`LEVEL UP! ${c.name} reached Level ${newLevel}!`)}
- else if(unlocked){celebrate(unlocked)}
- else toast(`Activity saved! +${overall} overall XP and +${perSkill} XP per skill.`);
+ let oldLevel=levelFor(c.xp),a={id:"a"+Date.now(),title,kind,minutes,skills,overall,skillAwards:awards,note:document.getElementById("actNote").value,date:new Date().toISOString()};
+ c.activities.push(a);c.xp+=overall;let newLevel=levelFor(c.xp);save();closeModal();render();let unlocked=checkAchievements(c);
+ if(newLevel>oldLevel)celebrate(`LEVEL UP! ${c.name} reached Level ${newLevel}!`);else if(unlocked)celebrate(unlocked);else toast(`Activity saved! +${overall} overall XP and +${perSkill} XP per skill.`);
 }
-
 function deleteActivity(id){
- let c=child(),a=c.activities.find(x=>x.id===id);
- if(!a)return;
- if(!confirm("Delete this activity and reverse only the XP it awarded?"))return;
- c.xp=Math.max(0,c.xp-a.overall);
- a.skills.forEach(s=>{c.skillXP[s]=Math.max(0,(c.skillXP[s]||0)-(a.skillAwards[s]||0))});
- c.activities=c.activities.filter(x=>x.id!==id);
- c.skills=c.skills.filter(s=>BASE.includes(s)||(c.skillXP[s]||0)>0);
- c.achievements=c.achievements.filter(k=>!["first","five","ten","skills","level3","level5","level21"].includes(k));
- save();render();toast("Activity deleted and its XP reversed.");
+ let c=child(),a=c.activities.find(x=>x.id===id);if(!a)return;if(!confirm("Delete this activity and reverse only the XP it awarded?"))return;
+ c.xp=Math.max(0,c.xp-a.overall);a.skills.forEach(s=>{c.skillXP[s]=Math.max(0,(c.skillXP[s]||0)-(a.skillAwards[s]||0))});
+ c.activities=c.activities.filter(x=>x.id!==id);c.skills=c.skills.filter(s=>BASE.includes(s)||(c.skillXP[s]||0)>0);
+ c.achievements=c.achievements.filter(k=>!["first","five","ten","skills","level3","level5","level21"].includes(k));save();render();toast("Activity deleted and its XP reversed.");
 }
-
 function openSkillPicker(){
  let c=child(),selected=new Set(c.skills);
  document.getElementById("modalContent").innerHTML=`<h2>Grow your skill chart</h2><p class="sub">Choose skills to add. There is no maximum. Activities can also discover skills for you.</p><input id="skillSearch" placeholder="Search the skill library…" style="width:100%;margin:10px 0;background:#0e1b2d;color:white;border:1px solid var(--line);border-radius:10px;padding:11px"><div id="skillPicker" class="chips" style="max-height:45vh;overflow:auto"></div><p class="tiny" id="selectedCount"></p><button class="btn" onclick="saveSkills()">Add selected skills</button>`;
- window.picked=selected;
- function draw(q=""){
-  document.getElementById("skillPicker").innerHTML=ALL.filter(s=>s.toLowerCase().includes(q.toLowerCase())).map(s=>`<button class="chip ${selected.has(s)?"selected":""}" onclick="toggleSkill('${s.replace(/'/g,"\\'")}',this)">${skillIcon(s)} ${esc(s)}</button>`).join("");
-  document.getElementById("selectedCount").textContent=`${selected.size} skills currently selected`;
- }
- window.drawSkillPicker=draw;
- document.getElementById("skillSearch").addEventListener("input",e=>draw(e.target.value));
- draw();openModal();
+ window.picked=selected;function draw(q=""){document.getElementById("skillPicker").innerHTML=ALL.filter(s=>s.toLowerCase().includes(q.toLowerCase())).map(s=>`<button class="chip ${selected.has(s)?"selected":""}" onclick="toggleSkill('${s.replace(/'/g,"\\'")}',this)">${skillIcon(s)} ${esc(s)}</button>`).join("");document.getElementById("selectedCount").textContent=`${selected.size} skills currently selected`}
+ window.drawSkillPicker=draw;document.getElementById("skillSearch").addEventListener("input",e=>draw(e.target.value));draw();openModal();
 }
-
-function toggleSkill(s,el){
- if(window.picked.has(s))window.picked.delete(s);
- else window.picked.add(s);
- el.classList.toggle("selected");
- document.getElementById("selectedCount").textContent=`${window.picked.size} skills currently selected`;
-}
-
-function saveSkills(){
- let c=child();
- c.skills=[...new Set([...c.skills,...window.picked])];
- save();closeModal();render();toast("Skill chart updated.");
-}
-
+function toggleSkill(s,el){if(window.picked.has(s))window.picked.delete(s);else window.picked.add(s);el.classList.toggle("selected");document.getElementById("selectedCount").textContent=`${window.picked.size} skills currently selected`}
+function saveSkills(){let c=child();c.skills=[...new Set([...c.skills,...window.picked])];save();closeModal();render();toast("Skill chart updated.")}
 function renderChallenges(c){
- document.getElementById("challengeList").innerHTML=CHALLENGES.map(([ico,name,desc,skill],i)=>{
-  let done=c.challenges.includes(i);
-  return `<div class="card"><div style="font-size:30px">${ico}</div><h3 style="margin:7px 0">${name}</h3><p class="sub">${desc}</p><div class="tiny">Suggested skill: ${skill}</div><button class="btn ${done?"secondary":""}" style="margin-top:12px" onclick="completeChallenge(${i})" ${done?"disabled":""}>${done?"Completed ✓":"Parent: confirm completion"}</button></div>`;
- }).join("");
+ document.getElementById("challengeList").innerHTML=CHALLENGES.map(([ico,name,desc,skill],i)=>{let done=c.challenges.includes(i);return `<div class="card"><div style="font-size:30px">${ico}</div><h3 style="margin:7px 0">${name}</h3><p class="sub">${desc}</p><div class="tiny">Suggested skill: ${skill}</div><button class="btn ${done?"secondary":""}" style="margin-top:12px" onclick="completeChallenge(${i})" ${done?"disabled":""}>${done?"Completed ✓":"Parent: confirm completion"}</button></div>`}).join("");
 }
-
 function completeChallenge(i){
- let c=child();
- if(c.challenges.includes(i))return;
- let [ico,name,desc,skill]=CHALLENGES[i];
- if(!confirm(`Confirm ${c.name} completed "${name}"?`))return;
- c.challenges.push(i);
- let activity={id:"ch"+Date.now(),title:name,kind:"Participating",minutes:15,skills:[skill],overall:18,skillAwards:{[skill]:12},note:"Optional challenge",date:new Date().toISOString()};
- c.activities.push(activity);c.xp+=18;c.skillXP[skill]=(c.skillXP[skill]||0)+12;
- if(!c.skills.includes(skill))c.skills.push(skill);
- save();
- let unlocked=checkAchievements(c);
- render();celebrate(unlocked||"Challenge completed! +18 XP");
+ let c=child();if(c.challenges.includes(i))return;let [ico,name,desc,skill]=CHALLENGES[i];if(!confirm(`Confirm ${c.name} completed "${name}"?`))return;
+ c.challenges.push(i);let activity={id:"ch"+Date.now(),title:name,kind:"Participating",minutes:15,skills:[skill],overall:18,skillAwards:{[skill]:12},note:"Optional challenge",date:new Date().toISOString()};
+ c.activities.push(activity);c.xp+=18;c.skillXP[skill]=(c.skillXP[skill]||0)+12;if(!c.skills.includes(skill))c.skills.push(skill);save();let unlocked=checkAchievements(c);render();celebrate(unlocked||"Challenge completed! +18 XP");
 }
-
 function checkAchievements(c){
  let l=levelFor(c.xp),checks=[["first",c.activities.length>=1],["five",c.activities.length>=5],["ten",c.activities.length>=10],["skills",c.skills.filter(s=>(c.skillXP[s]||0)>0).length>=10],["level3",l>=3],["level5",l>=5],["level21",l>=21]];
- for(let [id,ok] of checks){
-  if(ok&&!c.achievements.includes(id)){c.achievements.push(id);save();return ACH.find(a=>a[0]===id)[2]}
- }
- return null;
+ for(let [id,ok] of checks)if(ok&&!c.achievements.includes(id)){c.achievements.push(id);save();return ACH.find(a=>a[0]===id)[2]}return null;
 }
-
-function renderAchievements(c){
- document.getElementById("achievementList").innerHTML=ACH.map(([id,ico,name,desc])=>{
-  let got=c.achievements.includes(id);
-  return `<div class="achievement ${got?"":"locked"}"><div class="medal">${ico}</div><div><b>${name} ${got?"✓":"🔒"}</b><small style="display:block">${desc}</small></div><span class="tag" style="margin-left:auto">${got?"Unlocked":"Locked"}</span></div>`;
- }).join("");
-}
-
+function renderAchievements(c){document.getElementById("achievementList").innerHTML=ACH.map(([id,ico,name,desc])=>{let got=c.achievements.includes(id);return `<div class="achievement ${got?"":"locked"}"><div class="medal">${ico}</div><div><b>${name} ${got?"✓":"🔒"}</b><small style="display:block">${desc}</small></div><span class="tag" style="margin-left:auto">${got?"Unlocked":"Locked"}</span></div>`}).join("")}
 function celebrate(msg){
- document.getElementById("modalContent").innerHTML=`<div class="fireworks">🎆 ✨ 🎉 ✨ 🎆</div><h2 style="text-align:center;margin-top:18px">${esc(msg)}</h2><div class="character" style="min-height:130px;margin:15px 0"><div class="avatar">${charEmoji(child().character,levelFor(child().xp))}</div><b>🎊 Celebration dance! 🎊</b></div><p class="sub" style="text-align:center">Your effort is helping you grow.</p><button class="btn" style="width:100%;margin-top:12px" onclick="closeModal()">Awesome!</button>`;
- openModal();
+ document.getElementById("modalContent").innerHTML=`<div class="fireworks">🎆 ✨ 🎉 ✨ 🎆</div><h2 style="text-align:center;margin-top:18px">${esc(msg)}</h2><div class="character" style="min-height:130px;margin:15px 0"><div class="avatar"><img src="${characterImage(child().character,levelFor(child().xp))}" alt="Character"></div><b>🎊 Celebration dance! 🎊</b></div><p class="sub" style="text-align:center">Your effort is helping you grow.</p><button class="btn" style="width:100%;margin-top:12px" onclick="closeModal()">Awesome!</button>`;openModal();
 }
-
-function openModal(){document.getElementById("modalBack").classList.add("show")}
-function closeModal(){document.getElementById("modalBack").classList.remove("show")}
-
+function openModal(){document.getElementById("modalBack").classList.add("show")}function closeModal(){document.getElementById("modalBack").classList.remove("show")}
 function addChild(){
- document.getElementById("modalContent").innerHTML=`<h2>Add a child profile</h2><div class="field"><label>Child's name</label><input id="newName" placeholder="Name"></div><div class="field" style="margin-top:10px"><label>Choose a character</label><div class="chips" id="charPicker">${Object.entries(CHARS).map(([k,v])=>`<button class="chip ${k==="lion"?"selected":""}" data-char="${k}" onclick="document.querySelectorAll('#charPicker .chip').forEach(x=>x.classList.remove('selected'));this.classList.add('selected')">${v} ${k[0].toUpperCase()+k.slice(1)}</button>`).join("")}</div></div><div style="margin-top:15px"><button class="btn" onclick="saveChild()">Create profile</button></div>`;
- openModal();
+ document.getElementById("modalContent").innerHTML=`<h2>Add a child profile</h2><div class="field"><label>Child's name</label><input id="newName" placeholder="Name"></div><div class="field" style="margin-top:10px"><label>Choose a character</label><div class="chips" id="charPicker">${Object.entries(CHARS).map(([k,v])=>`<button class="chip ${k==="lion"?"selected":""}" data-char="${k}" onclick="document.querySelectorAll('#charPicker .chip').forEach(x=>x.classList.remove('selected'));this.classList.add('selected')">${v} ${k[0].toUpperCase()+k.slice(1)}</button>`).join("")}</div></div><div style="margin-top:15px"><button class="btn" onclick="saveChild()">Create profile</button></div>`;openModal();
 }
-
 function editChild(){
- let c=child();
- document.getElementById("modalContent").innerHTML=`<h2>Edit child profile</h2><div class="field"><label>Child's name</label><input id="editName" value="${esc(c.name)}"></div><div class="field" style="margin-top:10px"><label>Character</label><div class="chips" id="editCharPicker">${Object.entries(CHARS).map(([k,v])=>`<button type="button" class="chip ${k===c.character?"selected":""}" data-char="${k}" onclick="document.querySelectorAll('#editCharPicker .chip').forEach(x=>x.classList.remove('selected'));this.classList.add('selected')">${v} ${k[0].toUpperCase()+k.slice(1)}</button>`).join("")}</div></div><div style="margin-top:15px"><button class="btn" onclick="saveChildEdits()">Save changes</button></div>`;
- openModal();
+ let c=child();document.getElementById("modalContent").innerHTML=`<h2>Edit child profile</h2><div class="field"><label>Child's name</label><input id="editName" value="${esc(c.name)}"></div><div class="field" style="margin-top:10px"><label>Character</label><div class="chips" id="editCharPicker">${Object.entries(CHARS).map(([k,v])=>`<button type="button" class="chip ${k===c.character?"selected":""}" data-char="${k}" onclick="document.querySelectorAll('#editCharPicker .chip').forEach(x=>x.classList.remove('selected'));this.classList.add('selected')">${v} ${k[0].toUpperCase()+k.slice(1)}</button>`).join("")}</div></div><div style="margin-top:15px"><button class="btn" onclick="saveChildEdits()">Save changes</button></div>`;openModal();
 }
-
+function deleteChild(){
+ const c=child();if(!c)return;if(!confirm("Permanently delete "+c.name+" and all of that child’s activities, skills, XP and achievements from this browser? This cannot be undone."))return;
+ const removed=c.name;state.children=state.children.filter(x=>x.id!==c.id);
+ if(!state.children.length)state.children.push({id:"kid"+Date.now(),name:"New Child",character:"lion",skills:[...BASE],xp:0,skillXP:{},activities:[],achievements:[],challenges:[]});
+ state.active=state.children[0].id;save();render();toast(removed+" was deleted. Other profiles were kept.");
+}
 function saveChildEdits(){
- let c=child(),name=document.getElementById("editName").value.trim();
- if(!name){toast("Enter a name.");return}
- c.name=name;
- c.character=document.querySelector("#editCharPicker .selected")?.dataset.char||c.character;
- save();closeModal();render();toast("Profile updated.");
+ let c=child(),name=document.getElementById("editName").value.trim();if(!name){toast("Enter a name.");return}c.name=name;c.character=document.querySelector("#editCharPicker .selected")?.dataset.char||c.character;save();closeModal();render();toast("Profile updated.");
 }
-
 function saveChild(){
- let name=document.getElementById("newName").value.trim();
- if(!name){toast("Enter a name.");return}
- let character=document.querySelector("#charPicker .selected")?.dataset.char||"lion",id="kid"+Date.now();
- state.children.push({id,name,character,skills:[...BASE],xp:0,skillXP:{},activities:[],achievements:[],challenges:[]});
- state.active=id;
- save();closeModal();render();toast(`${name}'s profile created!`);
+ let name=document.getElementById("newName").value.trim();if(!name){toast("Enter a name.");return}
+ let character=document.querySelector("#charPicker .selected")?.dataset.char||"lion",id="kid"+Date.now();state.children.push({id,name,character,skills:[...BASE],xp:0,skillXP:{},activities:[],achievements:[],challenges:[]});state.active=id;save();closeModal();render();toast(`${name}'s profile created!`);
 }
-
-function exportData(){
- let blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");
- a.href=url;a.download="real-life-growth-family-data.json";a.click();URL.revokeObjectURL(url);
-}
-
-function resetDemo(){
- if(!confirm("Reset all prototype data on this device?"))return;
- state=defaultState();save();render();toast("Demo reset.");
-}
-
+function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="real-life-growth-family-data.json";a.click();URL.revokeObjectURL(url)}
+function resetDemo(){if(!confirm("Reset all prototype data on this device?"))return;state=defaultState();save();render();toast("Demo reset.")}
 function openOnboarding(){
- document.getElementById("modalContent").innerHTML=`<h2>Set up your skill chart</h2><p class="sub">Choose a starting point for this child. The chart can grow past 28 whenever activities reveal new interests.</p><div class="marketitem"><b>🌱 Quick Start — Base 28</b><p class="tiny">Use the recommended starter skills.</p><button class="btn" onclick="applyBase28()">Start with Base 28</button></div><div class="marketitem"><b>✨ Build Your Own</b><p class="tiny">Pick your own starting skills from the full library. You can choose 28 or a different number.</p><button class="btn secondary" onclick="openCustomOnboarding()">Choose my skills</button></div>`;
- openModal();
+ document.getElementById("modalContent").innerHTML=`<h2>Set up your skill chart</h2><p class="sub">Choose a starting point for this child. The chart can grow beyond the starter skills.</p><div class="marketitem"><b>🌱 Quick Start — Base 28</b><p class="tiny">Use the recommended starter skills.</p><button class="btn" onclick="applyBase28()">Start with Base 28</button></div><div class="marketitem"><b>✨ Build Your Own</b><p class="tiny">Pick your own starting skills from the full library.</p><button class="btn secondary" onclick="openCustomOnboarding()">Choose my skills</button></div>`;openModal();
 }
-
-function applyBase28(){
- let c=child(),earned=c.skills.filter(s=>(c.skillXP[s]||0)>0);
- c.skills=[...new Set([...BASE,...earned])];
- save();closeModal();render();toast("Base 28 skill chart is ready.");
-}
-
+function applyBase28(){let c=child(),earned=c.skills.filter(s=>(c.skillXP[s]||0)>0);c.skills=[...new Set([...BASE,...earned])];save();closeModal();render();toast("Base 28 skill chart is ready.")}
 function openCustomOnboarding(){
  let c=child(),selected=new Set(c.skills.filter(s=>(c.skillXP[s]||0)>0));
  document.getElementById("modalContent").innerHTML=`<h2>Build your own skill chart</h2><p class="sub">Choose the skills you want to start with. There is no maximum, and you can add more later.</p><input id="customSkillSearch" placeholder="Search all skills…" style="width:100%;margin:10px 0;background:#0e1b2d;color:white;border:1px solid var(--line);border-radius:10px;padding:11px"><div id="customSkillPicker" class="chips" style="max-height:42vh;overflow:auto"></div><p class="tiny" id="customSkillCount"></p><button class="btn" onclick="saveCustomOnboarding()">Use selected skills</button>`;
- window.customOnboardingSkills=selected;
- function draw(q=""){
-  let box=document.getElementById("customSkillPicker");
-  if(!box)return;
-  box.innerHTML=ALL.filter(x=>x.toLowerCase().includes(q.toLowerCase())).map(x=>`<button type="button" class="chip ${selected.has(x)?"selected":""}" data-custom-skill="${esc(x)}" onclick="toggleCustomOnboardingSkill(this)">${skillIcon(x)} ${esc(x)}</button>`).join("");
-  document.getElementById("customSkillCount").textContent=`${selected.size} selected · Add more whenever you like`;
- }
- window.drawCustomOnboarding=draw;
- document.getElementById("customSkillSearch").addEventListener("input",e=>draw(e.target.value));
- draw();
+ window.customOnboardingSkills=selected;function draw(q=""){let box=document.getElementById("customSkillPicker");if(!box)return;box.innerHTML=ALL.filter(x=>x.toLowerCase().includes(q.toLowerCase())).map(x=>`<button type="button" class="chip ${selected.has(x)?"selected":""}" data-custom-skill="${esc(x)}" onclick="toggleCustomOnboardingSkill(this)">${skillIcon(x)} ${esc(x)}</button>`).join("");document.getElementById("customSkillCount").textContent=`${selected.size} selected · Add more whenever you like`}
+ window.drawCustomOnboarding=draw;document.getElementById("customSkillSearch").addEventListener("input",e=>draw(e.target.value));draw();
 }
-
-function toggleCustomOnboardingSkill(el){
- let x=el.dataset.customSkill;
- if(window.customOnboardingSkills.has(x))window.customOnboardingSkills.delete(x);
- else window.customOnboardingSkills.add(x);
- el.classList.toggle("selected");
- document.getElementById("customSkillCount").textContent=`${window.customOnboardingSkills.size} selected · Add more whenever you like`;
-}
-
-function saveCustomOnboarding(){
- let c=child(),earned=c.skills.filter(s=>(c.skillXP[s]||0)>0);
- c.skills=[...new Set([...window.customOnboardingSkills,...earned])];
- save();closeModal();render();toast(`Your custom skill chart is ready with ${c.skills.length} skills.`);
-}
-
-// Expose handlers before startup rendering so inline buttons work.
-window.showTab=showTab;
-window.selectChild=selectChild;
-Object.assign(window,{
- showTab,selectChild,openActivity,openSkillPicker,approveActivity,deleteActivity,
- saveSkills,toggleSkill,completeChallenge,addChild,saveChild,exportData,resetDemo,
- closeModal,openModal,celebrate,editChild,saveChildEdits,openOnboarding,
- applyBase28,openCustomOnboarding,toggleCustomOnboardingSkill,saveCustomOnboarding
-});
-
-try{
- save();
- render();
-}catch(err){
- console.error("Startup render failed:",err);
- const host=document.querySelector(".app");
- if(host){
-  const notice=document.createElement("div");
-  notice.className="notice";
-  notice.textContent="Your saved family data needed a repair. The app has kept your profiles and is refreshing the view. Reload this page if needed.";
-  host.prepend(notice);
- }
- try{state=normalizeState(state);save();render()}
- catch(err2){console.error("Recovery render failed:",err2)}
-}
-
-window.addEventListener("error",event=>{
- const msg=event&&event.message?event.message:"Something went wrong";
- const el=document.getElementById("toast");
- if(el){el.textContent="App issue: "+msg;el.classList.add("show")}
-});
+function toggleCustomOnboardingSkill(el){let x=el.dataset.customSkill;if(window.customOnboardingSkills.has(x))window.customOnboardingSkills.delete(x);else window.customOnboardingSkills.add(x);el.classList.toggle("selected");document.getElementById("customSkillCount").textContent=`${window.customOnboardingSkills.size} selected · Add more whenever you like`}
+function saveCustomOnboarding(){let c=child(),earned=c.skills.filter(s=>(c.skillXP[s]||0)>0);c.skills=[...new Set([...window.customOnboardingSkills,...earned])];save();closeModal();render();toast(`Your custom skill chart is ready with ${c.skills.length} skills.`)}
+window.showTab=showTab;window.selectChild=selectChild;
+Object.assign(window,{showTab,selectChild,openActivity,openSkillPicker,approveActivity,deleteActivity,saveSkills,toggleSkill,completeChallenge,addChild,saveChild,exportData,resetDemo,closeModal,openModal,celebrate,editChild,saveChildEdits,deleteChild,addActivitySkill,openOnboarding,applyBase28,openCustomOnboarding,toggleCustomOnboardingSkill,saveCustomOnboarding});
+try{save();render()}catch(err){console.error("Startup render failed:",err);const host=document.querySelector(".app");if(host){const notice=document.createElement("div");notice.className="notice";notice.textContent="Your saved family data needed a repair. Reload this page if needed.";host.prepend(notice)}try{state=normalizeState(state);save();render()}catch(err2){console.error("Recovery render failed:",err2)}}
+window.addEventListener("error",event=>{const msg=event&&event.message?event.message:"Something went wrong",el=document.getElementById("toast");if(el){el.textContent="App issue: "+msg;el.classList.add("show")}});
 </script>
 </body>
 </html>
