@@ -1,692 +1,269 @@
-
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b1728">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101b2d">
 <title>Real Life Growth</title>
 <style>
-:root{font-family:Inter,system-ui,sans-serif;color:#f4f7fb;background:#091525}
-*{box-sizing:border-box}
-body{margin:0;background:#091525}
-button,input{font:inherit}
-button{border:0;border-radius:14px;padding:12px 17px;background:#f3c66e;color:#17253a;font-weight:750;cursor:pointer}
-button.secondary,nav button{background:#263e5c;color:#e7edf6}
-button.danger{background:#593044;color:#ffe0e8}
-input{width:100%;padding:14px;border-radius:13px;border:1px solid #314b6b;background:#0e1e32;color:white;margin:7px 0}
-.shell{max-width:1200px;margin:auto;padding:16px}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.brand{font-size:1.1rem;letter-spacing:.12em}
-.brand b{color:#f3c66e}
-nav{display:flex;gap:8px;overflow:auto;padding:16px 0;position:sticky;top:0;background:#091525;z-index:5}
-nav button{white-space:nowrap}
-nav button.selected{background:#f3c66e;color:#17253a}
-.panel,.hero{background:linear-gradient(135deg,#1a3452,#12233a);border:1px solid #2d4564;border-radius:24px;padding:24px;margin:14px 0}
-.hero h1{font-size:clamp(2rem,5vw,3.5rem);max-width:750px}
-.eyebrow{color:#f3c66e;letter-spacing:.16em;font-weight:800}
-.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:25px}
-.stats div{display:grid}
-.stats strong{font-size:1.8rem}
-.stats span,.muted{color:#aebdd0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:13px}
-.card{background:#102036;border:1px solid #2b4565;border-radius:18px;padding:18px;margin:10px 0}
-.card h3{margin:0 0 8px}
-.cardtop{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
-.pill{background:#29415f;color:#d8e3f0;border-radius:20px;padding:6px 10px;font-size:.82rem}
-.skill-ideas{margin-top:12px;padding-top:10px;border-top:1px solid #2b4565}
-.idea{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid #263b56}
-.idea button{padding:8px 11px;white-space:nowrap}
-.challenge{padding:14px 0;border-bottom:1px solid #2b4565}
-.notice{padding:13px;background:#453922;border-left:4px solid #f3c66e;border-radius:10px;margin:12px 0}
-.empty{padding:24px;text-align:center;color:#b5c3d4;border:1px dashed #3b5270;border-radius:18px}
-.hidden{display:none!important}
-footer{text-align:center;color:#7589a5;padding:30px 0}
-.fine{font-size:.9rem;color:#91a4bc}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-@media(max-width:600px){
-.shell{padding:10px}
-.hero,.panel{padding:18px}
-.idea{align-items:flex-start}
-.idea button{font-size:.85rem}
-}
+:root{--bg:#0b1423;--panel:#142238;--panel2:#1a2c45;--ink:#f4f7fb;--muted:#a9b8ca;--gold:#f5c66b;--mint:#69d6b1;--blue:#76b7ff;--line:#2c405c;--pink:#ed9cba;--red:#ff9a9a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1b3552 0,#0b1423 55%);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.app{max-width:1120px;margin:auto;padding:16px 16px 100px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.brand{display:flex;align-items:center;gap:10px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(145deg,#f4c76c,#c67e35);display:grid;place-items:center;font-size:24px}.brand b{display:block;font-size:17px}.brand small,.muted{color:var(--muted)}.pill{background:#263b56;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:7px 11px;font-size:12px}.card{background:linear-gradient(145deg,#192c45,#122036);border:1px solid var(--line);border-radius:20px;padding:17px;box-shadow:0 12px 35px #0002;margin-bottom:14px}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.hero-main{min-height:0;position:relative;overflow:hidden}.eyebrow{color:var(--gold);font-weight:800;text-transform:uppercase;letter-spacing:.13em;font-size:11px}.hero h1{font-size:clamp(27px,4vw,40px);line-height:1.05;margin:8px 0}.sub{color:var(--muted);margin:0}.statrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:17px}.stat{background:#0d1b2d;border:1px solid var(--line);padding:10px 11px;border-radius:13px;min-width:0}.stat b{overflow-wrap:anywhere}.stat small{display:block;line-height:1.2}.stat b{display:block;font-size:19px}.stat small{color:var(--muted)}.tabs{display:flex;gap:7px;overflow:auto;padding:3px 0 12px;position:sticky;top:0;z-index:5;background:#0b1423ed}.tab{background:#192b43;border:1px solid var(--line);color:var(--muted);border-radius:12px;padding:10px 13px;white-space:nowrap}.tab.active{background:#f1c66f;color:#172338;border-color:#f1c66f;font-weight:800}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.row.wrap{flex-wrap:wrap}.btn{background:linear-gradient(145deg,#f4c76c,#d89a48);color:#182337;font-weight:800;border-radius:12px;padding:11px 15px}.btn.secondary{background:#263b56;color:var(--ink);border:1px solid var(--line)}.btn.danger{background:#562d3b;color:#ffd9df;border:1px solid #9d5365}.btn.small{padding:7px 10px;font-size:13px}.btn:disabled{opacity:.5;cursor:not-allowed}input,select,textarea{width:100%;background:#0d1b2d;color:var(--ink);border:1px solid var(--line);border-radius:11px;padding:11px;margin:5px 0 10px}textarea{min-height:90px;resize:vertical}label{display:block;font-size:13px;color:var(--muted);margin-top:7px}.skill{background:#0e1c2e;border:1px solid var(--line);padding:12px;border-radius:14px;margin:8px 0}.bar{height:9px;background:#263b56;border-radius:99px;overflow:hidden;margin-top:8px}.bar span{display:block;height:100%;background:linear-gradient(90deg,#67d5ae,#f2c66e);border-radius:99px}.tag{font-size:11px;background:#263b56;color:#d5e3f4;padding:4px 8px;border-radius:99px}.chips{display:flex;gap:7px;flex-wrap:wrap;margin:7px 0}.chip{border:1px solid var(--line);background:#0e1c2e;color:var(--ink);border-radius:99px;padding:7px 10px;font-size:12px}.chip.selected{background:#315b58;border-color:var(--mint);color:#d9fff1}.profile{display:flex;align-items:center;gap:10px;background:#0e1c2e;padding:10px;border-radius:14px;border:1px solid var(--line);margin:8px 0}.avatar{width:52px;height:52px;border-radius:16px;background:#273c57;display:grid;place-items:center;font-size:30px;flex:none}.profile .grow{flex:1;min-width:0}.profile b{display:block}.section-title{font-size:20px;margin:3px 0 10px}.empty{padding:24px;text-align:center;color:var(--muted)}.activity{padding:12px;background:#0e1c2e;border:1px solid var(--line);border-radius:13px;margin:8px 0}.activity p{margin:5px 0}.activity small{color:var(--muted)}.notice{border-left:3px solid var(--gold);padding:9px 12px;background:#322d24;border-radius:8px;color:#ffe7b5;margin:10px 0}.hidden{display:none!important}.character{font-size:58px;text-align:center;padding:8px;line-height:1.2}.modal{position:fixed;inset:0;background:#0009;display:grid;place-items:center;padding:15px;z-index:20}.modalbox{background:#142238;border:1px solid var(--line);border-radius:20px;padding:20px;width:min(520px,100%);max-height:90vh;overflow:auto}.celebration{background:radial-gradient(circle at top,#3b5878,#142238 70%);border:2px solid var(--gold);box-shadow:0 0 0 5px #f5c66b22,0 20px 70px #0009;text-align:center;padding:30px 22px}.celebration .trophy{font-size:76px;animation:pop .65s ease-out}.celebration h2{font-size:30px;color:var(--gold)}@keyframes pop{0%{transform:scale(.3) rotate(-18deg);opacity:0}70%{transform:scale(1.18) rotate(5deg)}100%{transform:scale(1);opacity:1}}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#eec66d;color:#172338;padding:11px 17px;border-radius:99px;font-weight:800;z-index:30;box-shadow:0 8px 25px #0006}.checkline{display:flex;align-items:center;gap:8px}.checkline input{width:auto}.skillgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.skillgrid .skill{margin:0;min-width:0}.skillgrid .skill{display:flex;flex-direction:column;justify-content:space-between;min-height:88px;padding:10px}.skillgrid .skill .row{align-items:flex-start;gap:6px}.skillgrid .skill b{overflow-wrap:anywhere;word-break:normal;font-size:13px;line-height:1.25}.skillgrid .skill .tag{white-space:nowrap;font-size:10px;padding:3px 6px}.mascot{width:104px;height:104px;display:block;margin:8px auto}.avatar .mascot{width:52px;height:52px;margin:0}.idea-card{background:#0e1c2e;border:1px solid var(--line);padding:12px;border-radius:13px;margin:8px 0}.sample-badge{display:inline-block;background:#4b3d25;color:#ffe3a2;border:1px solid #a9803d;border-radius:99px;padding:4px 8px;font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.sample-card{background:linear-gradient(145deg,#203753,#12243a);border:1px solid #49627f;border-radius:15px;padding:14px;margin:10px 0}.sample-card h3{margin:8px 0 4px}.sample-card p{margin:5px 0}.sample-card .sample-meta{color:var(--muted);font-size:12px}.footer{color:#71839a;text-align:center;font-size:11px;margin-top:25px}
+.idea-level{display:inline-block;margin:3px 5px 3px 0;padding:4px 8px;border-radius:99px;background:#263b56;color:#dce8f5;font-size:11px}.challenge-suggestions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.challenge-suggestion{background:#0e1c2e;border:1px solid var(--line);border-radius:13px;padding:11px;min-width:0}.challenge-suggestion p{margin:5px 0;color:var(--muted);font-size:13px}@media(max-width:720px){.hero,.grid{grid-template-columns:1fr}.skillgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-main{min-height:0}.hero h1{font-size:clamp(27px,8vw,36px)}.statrow{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.stat{padding:9px 8px}.stat b{font-size:18px}.stat small{font-size:11px}.app{padding:12px 12px 90px}.card{padding:14px}.top{align-items:flex-start}}
+
+/* Real Life Growth 2.2 layout upgrades */
+.home-character-card{display:grid;grid-template-columns:118px 1fr;gap:14px;align-items:center;background:linear-gradient(135deg,#233e5e,#15263d);border:1px solid #526c8c;border-radius:20px;padding:15px;margin-bottom:14px}.home-character-art{background:radial-gradient(circle,#496787,#172b43);border-radius:18px;min-height:118px;display:grid;place-items:center}.home-character-art .mascot{width:108px;height:118px}.home-level{font-size:25px;font-weight:900;color:var(--gold)}.home-quick{display:grid;grid-template-columns:1fr 125px;gap:8px;align-items:end}.home-quick textarea{min-height:65px}.media-form{display:grid;grid-template-columns:1fr 1fr;gap:8px}.media-form .wide{grid-column:1/-1}.category-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.idea-grid,.family-grid,.video-grid,.local-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.idea-grid .idea-card{margin:0}.skillgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.skillgrid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.family-card{background:#0e1c2e;border:1px solid var(--line);border-radius:16px;padding:13px}.family-card.active{border-color:var(--gold);box-shadow:0 0 0 1px #f5c66b44}.family-head{display:flex;align-items:center;gap:10px}.family-head .grow{flex:1;min-width:0}.family-head .mascot{width:65px;height:70px;margin:0}.video-card{background:#0e1c2e;border:1px solid var(--line);border-radius:14px;padding:13px;min-width:0}.video-platform{font-size:11px;font-weight:900;letter-spacing:.08em;color:var(--gold)}.sample-ad{background:linear-gradient(145deg,#203753,#12243a);border:1px solid #49627f;border-radius:15px;padding:14px;margin:10px 0}.sample-ad h3{margin:7px 0 4px}.sample-ad p{margin:5px 0}.sample-ad small{color:var(--muted)}.sample-label{display:inline-block;background:#4b3d25;color:#ffe3a2;border:1px solid #a9803d;border-radius:99px;padding:4px 8px;font-size:10px;font-weight:900;letter-spacing:.08em}.family-statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.family-stat{background:#0d1b2d;border:1px solid var(--line);border-radius:12px;padding:10px}.family-stat b{display:block;font-size:19px}@media(max-width:720px){.home-character-card{grid-template-columns:90px 1fr;padding:10px;gap:10px}.home-character-art{min-height:95px}.home-character-art .mascot{width:84px;height:96px}.home-level{font-size:20px}.idea-grid,.family-grid,.video-grid,.local-grid{grid-template-columns:1fr}.skillgrid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.home-quick{grid-template-columns:1fr}.category-controls{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
-<div class="shell">
-
-<header>
-<div class="brand">REAL LIFE <b>GROWTH</b></div>
-<div class="fine">A family learning and growth journal</div>
-</header>
-
-<nav id="nav">
-<button class="selected" data-tab="Home">Home</button>
-<button data-tab="Skills">Skills & Activities</button>
-<button data-tab="Videos">Videos</button>
-<button data-tab="Local Pros">Local Pros</button>
-<button data-tab="Family">Family</button>
+<div class="app">
+<header class="top"><div class="brand"><div class="logo">🌱</div><div><b>REAL LIFE GROWTH</b><small>Everyday experiences become growth</small></div></div><span class="pill" id="saveState">Saved on this device</span></header>
+<section class="hero">
+ <div class="card hero-main"><div class="eyebrow">Your adventure starts here</div><h1 id="welcome">Small steps.<br>Big growth.</h1><p class="sub" id="heroSub">Notice what you learn. Celebrate how you grow.</p><div class="statrow"><div class="stat"><b id="totalXP">0</b><small>Total XP</small></div><div class="stat"><b id="levelNum">Level 1</b><small>Character level</small></div><div class="stat"><b id="skillCount">0</b><small>Skills growing</small></div></div></div>
+ <div class="card"><div class="eyebrow">Growing right now</div><div class="character" id="sideArt">🐣</div><h2 id="characterName" style="text-align:center;margin:0">Baby Explorer</h2><p class="muted" id="levelCaption" style="text-align:center;margin:3px">Level 1 · Every hero starts small</p><div class="bar"><span id="levelBar" style="width:0%"></span></div><p class="muted" id="nextLevelText" style="font-size:12px;text-align:center">0 XP to next level</p><div class="row"><button class="btn secondary small" onclick="showTab('profile')">My character</button><button class="btn small" onclick="showTab('log')">＋ Log growth</button></div></div>
+</section>
+<nav class="tabs" id="tabs">
+ <button class="tab active" data-tab="home" onclick="showTab('home')">Home</button><button class="tab" data-tab="skills" onclick="showTab('skills')">Skill Bars</button><button class="tab" data-tab="log" onclick="showTab('log')">＋ Activity</button><button class="tab" data-tab="challenges" onclick="showTab('challenges')">Challenges</button><button class="tab" data-tab="achievements" onclick="showTab('achievements')">Achievements</button><button class="tab" data-tab="ideas" onclick="showTab('ideas')">Skill Growth Ideas</button><button class="tab" data-tab="videos" onclick="showTab('videos')">Watch & Learn</button><button class="tab" data-tab="local" onclick="showTab('local')">Local Pros</button><button class="tab" data-tab="explore" onclick="showTab('explore')">Explore</button><button class="tab" data-tab="profile" onclick="showTab('profile')">Family Profiles</button>
 </nav>
-
-<div id="notice" class="notice hidden"></div>
-
 <main>
-
-<section id="page-Home">
-<div class="hero">
-<p class="eyebrow">YOUR GROWTH JOURNEY</p>
-<h1>Every day is a chance to grow.</h1>
-<p>Small actions. Real skills. Lifelong confidence.</p>
-<div class="stats">
-<div><strong id="activeCount">0</strong><span>Growing skills</span></div>
-<div><strong id="totalXp">0</strong><span>Total XP</span></div>
-<div><strong id="goalCount">0</strong><span>Active challenges</span></div>
-</div>
-</div>
-<h2>Growing right now</h2>
-<div id="homeSkills" class="grid"></div>
-<p class="muted">Choose any skill, try a real-life activity, and record your progress.</p>
+<section id="page-home">
+ <div class="grid"><div class="card"><h2 class="section-title">Your growth today</h2><p class="muted" id="todaySummary">Start by recording something you did, learned, watched, read, or created.</p><button class="btn" onclick="showTab('log')">Log an activity</button></div><div class="card"><h2 class="section-title">Keep growing</h2><p class="muted">Skills grow through practice, curiosity, helping others, and trying again. One activity can build more than one skill.</p><button class="btn secondary" onclick="showTab('skills')">Explore my skills</button></div></div>
+ <div class="card"><h2 class="section-title">＋ Add today's activity</h2><p class="muted">What did you do, practice, learn, or create today?</p><div class="home-quick"><div><label>Activity</label><textarea id="homeActivityText" placeholder="Example: Practiced baseball with Dad, read a book, helped cook dinner…"></textarea></div><div><label>Minutes</label><input id="homeActivityMinutes" type="number" min="1" max="600" value="20"><button class="btn" style="width:100%" onclick="quickLogFromHome()">Find skills ＋</button></div></div></div>
+ <div class="card"><div class="row"><h2 class="section-title">Recent activity</h2><span class="tag">Activity journal</span></div><div id="recentActivities"></div></div>
+ <div class="card"><h2 class="section-title">Skills getting stronger</h2><div id="topSkills"></div></div>
 </section>
-
-<section id="page-Skills" class="hidden">
-<div class="panel">
-<h1>All skills & activities</h1>
-<p class="muted">Explore the complete skill library. Every skill includes 20 activity ideas.</p>
-<input id="skillSearch" placeholder="Search all skills or categories...">
-<div id="skillGrid" class="grid"></div>
-</div>
-
-<div class="panel">
-<h2>Your challenges</h2>
-<p class="muted">All your saved goals live here. No duplicate challenges page.</p>
-<div id="challengeList"></div>
-</div>
+<section id="page-skills" class="hidden">
+ <div class="card"><div class="row wrap"><div><h2 class="section-title">Skill Bars</h2><p class="muted">A clean view of your growth across every tracked skill.</p></div><button class="btn" onclick="openAddSkill()">＋ Add a skill</button></div><input id="skillSearch" placeholder="Search skills…" oninput="renderSkills()"><div class="chips" id="skillFilters"></div><div id="skillList"></div></div>
 </section>
-
-<section id="page-Videos" class="hidden">
-<div class="panel">
-<h1>Watch and learn</h1>
-<p class="muted">Learning resources published by the Real Life Growth team.</p>
-<div id="videoList"></div>
-</div>
+<section id="page-log" class="hidden">
+ <div class="card"><h2 class="section-title">What did you do?</h2><p class="muted">Tell us what you did. Choose the skills that genuinely fit, then submit. No parent approval needed.</p>
+ <label>Describe your activity</label><textarea id="activityText" placeholder="Example: I read a baseball book about God, then practiced hitting with my dad…"></textarea>
+ <div><label>How long? (minutes)</label><input id="activityMinutes" type="number" min="1" max="600" value="20"></div>
+ <button class="btn" onclick="analyzeActivity()">Find skills from this activity</button><div id="suggestionArea"></div></div>
 </section>
-
-<section id="page-Local Pros" class="hidden">
-<div class="panel">
-<h1>Local Pros</h1>
-<p class="muted">Discover coaches, instructors, and services connected to your family's interests.</p>
-<div id="proList"></div>
-<p class="fine">Only genuine providers reviewed and published by the Real Life Growth team should appear here. No parent-submitted listings.</p>
+<section id="page-challenges" class="hidden"><div class="card"><div class="row"><div><h2 class="section-title">Challenges</h2><p class="muted">Choose a small goal and work toward it.</p></div><button class="btn" onclick="openChallenge()">＋ Create</button></div><div id="challengeIdeas"></div><h3>Your challenges</h3><div id="challengeList"></div></div></section>
+<section id="page-achievements" class="hidden"><div class="card"><h2 class="section-title">Achievements</h2><p class="muted">Celebrate consistency, curiosity, and effort.</p><div id="achievementList"></div></div></section>
+<section id="page-explore" class="hidden"><div class="card"><h2 class="section-title">Explore & learn</h2><p class="muted">A parent-managed place to save resources and ideas. Sample resources below are examples, not live marketplace listings.</p><div id="resourceList"></div><div class="notice">Parent note: external links open outside this app. Review videos and resources before children use them.</div><button class="btn secondary" onclick="showTab('profile')">Parent controls</button></div></section>
+<section id="page-ideas" class="hidden"><div class="card"><h2 class="section-title">Skill Growth Ideas</h2><p class="muted">Explore the full skill library and find real-life ways to build each ability.</p><div class="category-controls"><div><label>Skill category</label><select id="ideaCategory" onchange="renderIdeas()"><option value="all">All categories</option></select></div><div><label>Find a skill</label><input id="ideaSearch" placeholder="Search skills…" oninput="renderIdeas()"></div></div><div id="ideaList"></div></div></section>
+<section id="page-videos" class="hidden"><div class="card"><h2 class="section-title">Watch & Learn</h2><p class="muted">Save useful Instagram, YouTube, Facebook, and TikTok posts, then connect each one to the skill it can grow.</p><div class="media-form"><div class="wide"><label>Post or video title</label><input id="videoTitle" placeholder="What will this teach?"></div><div class="wide"><label>Social media link</label><input id="videoURL" type="url" placeholder="https://…"></div><div><label>Skill category</label><select id="videoCategory" onchange="populateVideoSkills()"></select></div><div><label>Skill</label><select id="videoSkill"></select></div><div class="wide"><button class="btn" onclick="addVideo()">＋ Save learning link</button></div></div><div class="notice">Links open on their original platforms. Review each post before sharing it with children.</div><div class="category-controls"><div><label>Filter category</label><select id="videoCategoryFilter" onchange="renderVideos()"><option value="all">All categories</option></select></div><div><label>Filter skill</label><select id="videoSkillFilter" onchange="renderVideos()"><option value="all">All skills</option></select></div></div><div id="videoList"></div></div></section>
+<section id="page-local" class="hidden"><div class="card"><h2 class="section-title">Local Pros</h2><p class="muted">Explore what a skill-based local professional directory could look like.</p><div class="category-controls"><div><label>Skill category</label><select id="localCategory" onchange="populateLocalSkills()"></select></div><div><label>Skill</label><select id="localSkill" onchange="renderLocal()"></select></div></div><div class="notice"><b>Demonstration only:</b> Every professional and advertisement below is fictional. No real business is being promoted or endorsed.</div><div id="localList"></div></div></section>
+<section id="page-profile" class="hidden"><div class="card"><div class="row wrap"><div><h2 class="section-title">Family Profiles</h2><p class="muted">Each family member has a separate character, skill journey, and activity history.</p></div><button class="btn" onclick="openAddChild()">＋ Add family member</button></div><div id="profileOverview"></div><div id="profileList" class="family-grid"></div></div><div class="card"><h2 class="section-title">Edit selected profile</h2><div class="row wrap"><div class="character" id="profileArt">🐣</div><div style="flex:1;min-width:180px"><label>Profile name</label><input id="editName"><label>Character</label><select id="editCharacter"><option value="boy">Boy adventurer</option><option value="girl">Girl adventurer</option><option value="lion">Lion</option><option value="tiger">Tiger</option><option value="wolf">Wolf</option><option value="bear">Bear</option><option value="dragon">Dragon</option><option value="unicorn">Unicorn</option><option value="fox">Fox</option></select><button class="btn" onclick="saveProfile()">Save changes</button></div></div></div><div class="card"><div class="row wrap"><div><h2 class="section-title">Activity history</h2><p class="muted">Delete an activity from this profile if it was logged by mistake. Its XP is reversed from the same skills.</p></div><span class="tag" id="profileActivityCount">0 activities</span></div><div id="parentActivityList"></div></div><div class="card"><h2 class="section-title">Parent tools & backups</h2><button class="btn secondary small" onclick="exportData()">Export family data</button> <button class="btn secondary small" onclick="importData()">Import backup</button> <button class="btn danger small" onclick="resetSelected()">Reset selected profile progress</button><hr style="border-color:var(--line);margin:17px 0"><h3>Family resource shelf</h3><label>Resource title</label><input id="resourceTitle" placeholder="Resource title"><label>Resource link (optional)</label><input id="resourceURL" placeholder="https://…"><button class="btn secondary" onclick="addResource()">Add resource</button><div id="resourceList"></div></div></section>
+</main><div class="footer">Real Life Growth · Family learning journal · Prototype v2.2 · Data stays in this browser unless you export it</div>
 </div>
-</section>
-
-<section id="page-Family" class="hidden">
-<div class="panel">
-<h1>Family profiles</h1>
-<p class="muted">Manage family profiles and review progress.</p>
-<label>Child's display name</label>
-<input id="childName" placeholder="Enter a name">
-<label>Birth year</label>
-<input id="birthYear" type="number" placeholder="2018">
-<button id="addChild">Add profile</button>
-<div id="profiles" style="margin-top:16px"></div>
-</div>
-</section>
-
-</main>
-
-<footer>
-Real Life Growth · Family learning journal
-</footer>
-</div>
-
+<div id="modal" class="modal hidden"><div class="modalbox" id="modalBox"></div></div><div id="toast" class="toast hidden"></div>
 <script>
+"use strict";
+const STORE="realLifeGrowth.family.v3";
+const BASE_SKILLS=["Reading","Writing","Math","Science","History","Art & Creativity","Music","Sportsmanship","Teamwork","Leadership","Communication","Problem Solving","Critical Thinking","Focus","Discipline","Responsibility","Kindness","Helping Others","God Relationship","Cooking","Building & Making","Technology","Nature & Outdoors","Fitness","Strength","Speed","Coordination","Balance"];
+const EXTRA_SKILLS=["Baseball","Basketball","Football","Soccer","Golf","Tennis","Pickleball","Swimming","Running","Cycling","Dance","Gymnastics","Martial Arts","Volleyball","Hockey","Fishing","Gardening","Animals & Pet Care","Public Speaking","Entrepreneurship","Money Skills","Geography","Languages","Research","Memory","Strategy","Creativity","Drawing","Painting","Photography","Video Production","Coding","Chess","Team Leadership","Empathy","Patience","Resilience","Self-Control","Courage","Gratitude","Serving Others","First Aid","Outdoor Survival","Carpentry","Sewing","Music Performance","Singing","Instruments","Nutrition","Healthy Habits","Flexibility","Endurance","Agility","Hiking","Camping","Public Service","Organization","Time Management","Goal Setting","Listening","Debate","Engineering","Design","Theater","Acting","Reading Comprehension","Research Skills","Scientific Method","Faith & Character","Conflict Resolution","Sports Strategy","Cooperation","Fine Motor Skills","Decision Making","Adaptability","Confidence","Teaching","Mentoring","Volunteering","World Cultures","Weather","Space & Astronomy","Plants","Wildlife","Digital Citizenship","Media Literacy","Crafts","Puzzles","Logic"];
+const ICONS={boy:"🧒",girl:"👧",lion:"🦁",tiger:"🐯",wolf:"🐺",bear:"🐻",dragon:"🐲",unicorn:"🦄",fox:"🦊"};
+const STAGES=[{l:1,n:"Baby Explorer",d:"Every hero starts small"},{l:2,n:"Curious Little One",d:"Discovering the world"},{l:3,n:"Growing Explorer",d:"Learning something new"},{l:4,n:"Brave Adventurer",d:"Trying new challenges"},{l:5,n:"Skill Builder",d:"Practice makes progress"},{l:6,n:"Little Trailblazer",d:"Finding your strengths"},{l:7,n:"Confident Explorer",d:"Growing every day"},{l:8,n:"Creative Adventurer",d:"Ideas are taking shape"},{l:9,n:"Courageous Learner",d:"Brave enough to try"},{l:10,n:"Rising Champion",d:"Strong habits are forming"},{l:11,n:"Young Trailblazer",d:"Making your own path"},{l:12,n:"Focused Achiever",d:"Small goals add up"},{l:13,n:"Skilled Adventurer",d:"Your abilities are growing"},{l:14,n:"Resilient Hero",d:"You keep going"},{l:15,n:"Rising Star",d:"Your effort shines"},{l:16,n:"Hero in Training",d:"Ready for bigger challenges"},{l:17,n:"Brave Hero",d:"You lift others up"},{l:18,n:"Super Skill Builder",d:"Your practice is paying off"},{l:19,n:"Champion in Training",d:"Strong mind, strong heart"},{l:20,n:"Legend in the Making",d:"Almost superhero level"},{l:21,n:"SUPERHERO",d:"You use your strengths for good"},{l:22,n:"Superhero Mentor",d:"Helping others grow"},{l:23,n:"Elite Champion",d:"Excellence through effort"},{l:24,n:"Master Adventurer",d:"Always curious"},{l:25,n:"Legendary Hero",d:"Your growth inspires others"},{l:26,n:"Champion Hero",d:"A lifetime learner"}];
+const THRESHOLDS=Array.from({length:26},(_,i)=>i===0?0:Math.round(40*Math.pow(i,1.42)));
+function freshChild(name,kind){return{id:uid(),name,kind,skills:BASE_SKILLS.map(n=>({name:n,xp:0})),xp:0,activities:[],pending:[],challenges:[],created:Date.now()};}
+function uid(){return Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-4)}
+function load(){try{const x=JSON.parse(localStorage.getItem(STORE));if(x&&Array.isArray(x.children)&&x.children.length){x.children.forEach(normalizeChild);return x}}catch(e){}return{children:[freshChild("Explorer","boy")],active:null,videos:[],localListings:[],resources:[{title:"Practice a skill for 10 minutes",url:""},{title:"Read together and talk about what you learned",url:""}]};}
+function normalizeChild(c){c.skills=Array.isArray(c.skills)?c.skills:[];c.activities=Array.isArray(c.activities)?c.activities:[];c.pending=Array.isArray(c.pending)?c.pending:[];c.challenges=Array.isArray(c.challenges)?c.challenges:[];c.xp=Number(c.xp)||0;c.skills.forEach(s=>{s.xp=Number(s.xp)||0;if(s.name==="Faith & Relationship with God")s.name="God Relationship"});c.activities.forEach(a=>{a.id=a.id||uid();a.type="Activity";a.skills=(a.skills||[]).map(n=>n==="Faith & Relationship with God"?"God Relationship":n);if(a.skillAwards&&a.skillAwards["Faith & Relationship with God"]!==undefined){a.skillAwards["God Relationship"]=(a.skillAwards["God Relationship"]||0)+a.skillAwards["Faith & Relationship with God"];delete a.skillAwards["Faith & Relationship with God"]}});c.kind=c.kind||"boy";if(c.pending.length){c.pending.forEach(a=>{a.type="Activity";a.id=a.id||uid();a.skills=(a.skills||[]).map(n=>n==="Faith & Relationship with God"?"God Relationship":n);awardActivityXP(c,a.skills,Number(a.xp)||0,a);c.activities.push(a)});c.pending=[]}}
+let db=load();if(!db.children.length)db.children=[freshChild("Explorer","boy")];let activeId=db.active&&db.children.some(c=>c.id===db.active)?db.active:db.children[0].id;let suggestions=[],suggestionText="";
+function child(){return db.children.find(c=>c.id===activeId)||db.children[0]}
+function save(){db.active=activeId;localStorage.setItem(STORE,JSON.stringify(db));document.getElementById("saveState").textContent="Saved on this device"}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function level(xp){let n=1;for(let i=1;i<THRESHOLDS.length;i++)if(xp>=THRESHOLDS[i])n=i+1;return Math.min(26,n)}
+function nextXP(xp){let l=level(xp);return l>=26?THRESHOLDS[25]:THRESHOLDS[l]}
+function stageName(l){return STAGES.find(s=>s.l===l)?.n||"Growing Champion"}
+function artFor(c,l){
+ const palettes={boy:['#d9a078','#5a3829','#3978bd'],girl:['#d9a078','#5a3829','#b65f9b'],lion:['#e9a83d','#8a4e20','#d98b2e'],tiger:['#f0a43c','#252b35','#e18a2c'],wolf:['#aab8c8','#526274','#73889e'],bear:['#b98258','#593b2b','#98613f'],dragon:['#65b99a','#235b50','#3c9278'],unicorn:['#e7c8f4','#9d6fc0','#bd8be0'],fox:['#e58a48','#743e25','#c66a32']};
+ const [fur,dark,body]=palettes[c.kind]||palettes.boy, baby=l===1,hero=l>=21,stage=l>=16?'advanced':l>=10?'mid':l>=4?'young':'baby';
+ const ear=c.kind==='lion'||c.kind==='tiger'||c.kind==='fox'?`<path d="M29 48 L19 13 Q38 16 46 39 M71 39 Q82 16 91 13 L81 48" fill="${fur}" stroke="${dark}" stroke-width="5"/>`:c.kind==='wolf'||c.kind==='bear'?`<circle cx="29" cy="39" r="16" fill="${fur}" stroke="${dark}" stroke-width="5"/><circle cx="81" cy="39" r="16" fill="${fur}" stroke="${dark}" stroke-width="5"/>`:`<path d="M31 38 Q19 12 46 26 M69 26 Q96 12 84 38" fill="${fur}" stroke="${dark}" stroke-width="4"/>`;
+ const muzzle=['lion','tiger','wolf','bear','fox'].includes(c.kind)?`<ellipse cx="55" cy="70" rx="22" ry="16" fill="#fff0dc"/><path d="M51 67 Q55 62 59 67 Q55 74 51 67" fill="${dark}"/>`:`<path d="M46 70 Q55 78 64 70" stroke="${dark}" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+ const stripes=c.kind==='tiger'?`<path d="M42 29 L49 43 M55 25 L57 41 M68 29 L64 43" stroke="${dark}" stroke-width="5" stroke-linecap="round"/>`:c.kind==='lion'?`<circle cx="55" cy="55" r="43" fill="none" stroke="#bd7027" stroke-width="12" stroke-dasharray="8 5"/>`:'';
+ const outfit=hero?`<path d="M25 82 Q55 65 85 82 L96 119 L14 119Z" fill="#2865b9" stroke="#18385f" stroke-width="4"/><path d="M25 84 L4 120 L30 112 L51 128 L71 112 L98 120 L85 84" fill="#d94750"/><path d="M55 84 L64 99 L55 112 L46 99Z" fill="#f6d36f"/>`:stage==='advanced'?`<path d="M28 83 Q55 70 82 83 L90 119 L20 119Z" fill="#d6a63c" stroke="${dark}" stroke-width="4"/>`:stage==='mid'?`<path d="M30 84 Q55 72 80 84 L87 119 L23 119Z" fill="#477eb5" stroke="${dark}" stroke-width="4"/>`:stage==='young'?`<path d="M33 86 Q55 76 77 86 L82 119 L28 119Z" fill="#64a88c" stroke="${dark}" stroke-width="4"/>`:`<path d="M35 89 Q55 78 75 89 L80 115 Q55 126 30 115Z" fill="#f1c66e" stroke="${dark}" stroke-width="4"/>`;
+ const hair=c.kind==='boy'||c.kind==='girl'?`<path d="M22 53 Q17 12 55 14 Q94 13 88 54 Q75 35 62 34 Q43 42 22 53Z" fill="${dark}"/>`:'';
+ const accessory=hero?`<path d="M38 18 L55 2 L72 18" fill="none" stroke="#f5c66b" stroke-width="7"/>`:l>=10?`<path d="M42 17 L55 7 L68 17" fill="none" stroke="#f5c66b" stroke-width="5"/>`:'';
+ const eyes=`<ellipse cx="42" cy="57" rx="5" ry="7" fill="#172338"/><ellipse cx="68" cy="57" rx="5" ry="7" fill="#172338"/><circle cx="43" cy="55" r="2" fill="white"/><circle cx="69" cy="55" r="2" fill="white"/>`;
+ return `<svg class="mascot" viewBox="0 0 110 132" role="img" aria-label="${esc(c.name)} ${c.kind} character, level ${l}"><defs><linearGradient id="fur${c.id}" x1="0" y1="0" x2="1" y2="1"><stop stop-color="white" stop-opacity=".35"/><stop offset="1" stop-color="${fur}"/></linearGradient></defs>${outfit}${ear}<circle cx="55" cy="56" r="35" fill="url(#fur${c.id})" stroke="${dark}" stroke-width="5"/>${hair}${stripes}${eyes}${muzzle}${accessory}${hero?`<circle cx="55" cy="58" r="49" fill="none" stroke="#f5c66b" stroke-width="3" stroke-dasharray="5 4"/>`:''}</svg>`;
+}
+function xpFor(minutes,effort){const base=Math.min(55,Math.max(3,Math.round(4+minutes/7)));return Math.max(2,Math.min(70,Math.round(base*effort)))}
+function awardActivityXP(c,names,xp,activity){const valid=[...new Set(names)].filter(n=>c.skills.some(s=>s.name===n));if(!valid.length)return 0;const total=Math.max(1,Math.round(xp)),each=Math.floor(total/valid.length),remainder=total%valid.length,awards={};valid.forEach((n,i)=>{const amount=each+(i<remainder?1:0);awards[n]=amount;const skill=c.skills.find(x=>x.name===n);skill.xp+=amount});c.xp+=total;if(activity)activity.skillAwards=awards;return total}
+function deleteActivity(id){const c=child(),i=c.activities.findIndex(a=>a.id===id);if(i<0)return;const a=c.activities[i];if(!confirm(`Delete this activity and reverse its ${a.xp} XP? This only affects ${c.name}'s profile.`))return;let awards=a.skillAwards;if(!awards){awards={};const valid=[...new Set(a.skills||[])].filter(n=>c.skills.some(s=>s.name===n));const each=Math.max(1,Math.round((Number(a.xp)||0)/Math.max(1,valid.length)));valid.forEach(n=>awards[n]=each)}let reversed=0;Object.entries(awards).forEach(([name,amount])=>{const skill=c.skills.find(s=>s.name===name);if(skill){const take=Math.min(skill.xp,Number(amount)||0);skill.xp-=take;reversed+=take}});c.xp=Math.max(0,c.xp-(a.skillAwards?Number(a.xp)||0:reversed));c.activities.splice(i,1);save();render();toast("Activity deleted and XP reversed.") }
+function showTab(tab){document.querySelectorAll("main>section").forEach(s=>s.classList.add("hidden"));document.getElementById("page-"+tab).classList.remove("hidden");document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));document.querySelector(".hero").classList.toggle("hidden",!['home','skills'].includes(tab));if(tab==="home")renderHome();if(tab==="skills")renderSkills();if(tab==="profile")renderProfile();if(tab==="challenges")renderChallenges();if(tab==="achievements")renderAchievements();if(tab==="explore")renderResources();if(tab==="ideas")renderIdeas();if(tab==="videos")renderVideos();if(tab==="local")renderLocal();window.scrollTo({top:0,behavior:"smooth"})}
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.remove("hidden");setTimeout(()=>t.classList.add("hidden"),2400)}
+function render(){save();const c=child(),l=level(c.xp),art=artFor(c,l),stage=stageName(l);document.getElementById("welcome").innerHTML=esc(c.name)+",<br>look how you grow!";document.getElementById("heroSub").textContent="Every activity is a chance to learn something.";document.getElementById("totalXP").textContent=c.xp;document.getElementById("levelNum").textContent="Level "+l;document.getElementById("skillCount").textContent=c.skills.length;document.getElementById("sideArt").innerHTML=art;document.getElementById("profileArt").innerHTML=art;document.getElementById("characterName").textContent=stage;document.getElementById("levelCaption").textContent="Level "+l+" · "+(STAGES.find(s=>s.l===l)?.d||"Keep growing");let prev=THRESHOLDS[l-1],next=nextXP(c.xp),pct=l>=26?100:Math.max(0,Math.min(100,(c.xp-prev)/(next-prev)*100));document.getElementById("levelBar").style.width=pct+"%";document.getElementById("nextLevelText").textContent=l>=26?"Max level reached — legendary!":(next-c.xp)+" XP to Level "+(l+1);renderHome();renderProfile();renderSkills();renderChallenges();renderAchievements();renderResources();renderIdeas();renderVideos();renderLocal()}
+function renderHome(){const c=child(),today=new Date().toDateString(),acts=c.activities.filter(a=>new Date(a.date).toDateString()===today);document.getElementById("todaySummary").textContent=acts.length?acts.length+" activities today · "+acts.reduce((s,a)=>s+a.xp,0)+" XP earned.":"No activities logged today yet. Every little effort counts.";let recent=c.activities.slice().reverse().slice(0,4);document.getElementById("recentActivities").innerHTML=recent.length?recent.map(a=>activityHTML(a)).join(""):'<div class="empty">Your activities will appear here.</div>';let top=c.skills.slice().sort((a,b)=>b.xp-a.xp).slice(0,5);document.getElementById("topSkills").innerHTML=top.map(skillHTML).join("")}
+function activityHTML(a){return `<div class="activity"><div class="row"><b>${esc(a.text)}</b><span class="tag">+${a.xp} XP</span></div><small>${esc(a.type||"Activity")} · ${a.minutes} min · ${new Date(a.date).toLocaleDateString()}</small><p class="muted">${(a.skills||[]).map(esc).join(" · ")}</p><button class="btn danger small" onclick="deleteActivity('${esc(a.id)}')">Delete activity</button></div>`}
+function skillHTML(s){let l=level(s.xp),prev=THRESHOLDS[l-1],next=nextXP(s.xp),pct=l>=26?100:(s.xp-prev)/(next-prev)*100;return `<div class="skill"><div class="row"><b>${esc(s.name)}</b><span class="tag">Lv ${l} · ${s.xp} XP</span></div><div class="bar"><span style="width:${Math.max(0,Math.min(100,pct))}%"></span></div></div>`}
+function renderSkills(){let c=child(),q=(document.getElementById("skillSearch")?.value||"").toLowerCase();let arr=c.skills.filter(s=>s.name.toLowerCase().includes(q)).sort((a,b)=>b.xp-a.xp);document.getElementById("skillList").innerHTML=arr.length?`<div class="skillgrid">${arr.map(skillHTML).join("")}</div>`:'<div class="empty">No matching skills. Add it to your profile.</div>'}
+function openAddSkill(){const c=child();modal(`<h2>Add a skill</h2><p class="muted">Search the library or create a skill of your own. Skills can be added anytime.</p><input id="newSkillSearch" placeholder="Search 100+ skills…" oninput="filterSkillChoices()"><div id="skillChoices" class="chips"></div><label>Or add a custom skill</label><input id="customSkill" placeholder="Type a skill name"><button class="btn" onclick="addCustomSkill()">Add custom skill</button><button class="btn secondary" onclick="closeModal()">Done</button>`);filterSkillChoices()}
+function filterSkillChoices(){const target=document.getElementById("skillChoices");if(!target)return;let q=(document.getElementById("newSkillSearch")?.value||"").toLowerCase(),c=child(),opts=[...new Set([...BASE_SKILLS,...EXTRA_SKILLS])].filter(n=>n.toLowerCase().includes(q)&&!c.skills.some(s=>s.name.toLowerCase()===n.toLowerCase())).slice(0,70);target.innerHTML=opts.map(n=>`<button class="chip" data-skill="${esc(n)}" onclick="addSkillFromButton(this)">${esc(n)} ＋</button>`).join("")||'<span class="muted">No new matches.</span>'}
+function addSkillFromButton(button){const n=button.dataset.skill;addSkill(n);button.textContent="Added ✓";button.disabled=true}
+function addSkill(n){let c=child();if(!c.skills.some(s=>s.name.toLowerCase()===n.toLowerCase())){c.skills.push({name:n,xp:0});render();toast(n+" added!")}filterSkillChoices()}
+function addCustomSkill(){let n=document.getElementById("customSkill").value.trim();if(n){addSkill(n);document.getElementById("customSkill").value=""}}
+function analyzeActivity(){const text=document.getElementById("activityText").value.trim(),minutes=Math.max(1,Math.min(600,Number(document.getElementById("activityMinutes").value)||1)),effort=1;if(!text){toast("Describe the activity first.");return}suggestions=mapSkills(text);suggestionText=text;const c=child();if(!suggestions.length){document.getElementById("suggestionArea").innerHTML='<div class="notice">We could not match this activity to a skill yet. Add a skill below or choose one from your list before submitting.</div>';return}const missing=suggestions.filter(n=>!c.skills.some(s=>s.name===n));document.getElementById("suggestionArea").innerHTML=`<div class="card" style="margin-top:14px"><h3>Skills this may have grown</h3><p class="muted">Suggestions are based on your description, not an AI judgment. Learning about a sport can grow sport knowledge; physical skills are suggested only when you actually practice or play. Tap any skill to include or remove it.</p><div class="chips" id="suggestedChips">${suggestions.map(n=>`<button class="chip selected" data-skill="${esc(n)}" onclick="this.classList.toggle('selected');this.textContent=this.classList.contains('selected')?'${esc(n)} ✓':'${esc(n)}'">${esc(n)} ✓</button>`).join("")}</div>${missing.length?`<div class="notice" id="missingNotice">Can't submit yet: ${missing.map(esc).join(", ")} ${missing.length===1?"is":"are"} suggested but not in this child's skill list. Tap “＋ Add” next to each skill you want to track. Then submit again.</div><div class="chips">${missing.map(n=>`<button class="chip" data-skill="${esc(n)}" onclick="addSuggestedSkill('${esc(n)}',this)">${esc(n)} ＋ Add</button>`).join("")}</div>`:""}<p class="muted">Estimated award: <b>${xpFor(minutes,effort)} XP</b>, shared across selected skills.</p><button class="btn" onclick="submitActivity(${minutes},${effort})">Submit activity</button></div>`}
+function addSuggestedSkill(name,button){addSkill(name);button.textContent="Added ✓";button.disabled=true;const notice=document.getElementById("missingNotice");if(notice)notice.textContent="Skill added. You can now submit this activity."}
+function mapSkills(raw){
+ const t=raw.toLowerCase(),out=new Set(),add=(...names)=>names.forEach(n=>out.add(n));
+ // Faith language should always connect to the single God Relationship skill.
+ if(/\b(god|gods|god's|jesus|christ|christian|holy spirit|bible|scripture|church|worship|pray|prayer|praying|praise|faith|sermon|pastor|sunday school|devotion|devotional|gospel|ministry|fellowship|communion|baptis\w*|salvation|discipleship|religio\w*|spiritual|lent|advent|mass|chapel|youth group|bible study|parable|psalm|proverb|christmas service|youth ministry|mission trip|church camp|worship service|testimony|disciples|commandments|genesis|exodus|gospels)\b/.test(t))add("God Relationship");
+ if(/\b(read|reading|book|novel|story|chapter|library|bible|scripture)\b/.test(t))add("Reading");
+ if(/\b(write|writing|essay|journal|poem|letter)\b/.test(t))add("Writing");
+ if(/\b(math|addition|subtract|multiply|division|fraction|equation|calculate|measure)\b/.test(t))add("Math");
+ if(/\b(science|experiment|weather|space|planet|research)\b/.test(t))add("Science");
+ if(/\b(draw|paint|art|craft|design|color|create|created|making)\b/.test(t))add("Art & Creativity");
+ if(/\b(music|song|sing|piano|guitar|drum|instrument|choir)\b/.test(t))add("Music");
+ const sports=[
+ {name:"Baseball",re:/\b(baseball|softball|batting|pitcher|pitching|catcher|fielding|home run|base hit)\b/},
+ {name:"Basketball",re:/\b(basketball|hoops?|dribbl(?:e|ed|ing)|free throw|layup)\b/},
+ {name:"Football",re:/\b(football|touchdown|quarterback|tackle|route running)\b/},
+ {name:"Soccer",re:/\b(soccer|goal kick|penalty kick|throw[- ]in|corner kick)\b/},
+ {name:"Golf",re:/\b(golf|putt(?:ing)?|tee time|golf club)\b/},
+ {name:"Tennis",re:/\b(tennis|serve|forehand|backhand)\b/},
+ {name:"Pickleball",re:/\b(pickleball)\b/},
+ {name:"Volleyball",re:/\b(volleyball|spike|bump|set the ball)\b/},
+ {name:"Swimming",re:/\b(swim(?:ming)?|swam|pool laps?)\b/},
+ {name:"Running",re:/\b(run|running|jog|sprint|track meet)\b/},
+ {name:"Dance",re:/\b(dance|dancing|ballet|choreography)\b/},
+ {name:"Gymnastics",re:/\b(gymnastics|cartwheel|handstand|tumble)\b/},
+ {name:"Martial Arts",re:/\b(martial arts|karate|taekwondo|judo)\b/},
+ {name:"Hockey",re:/\b(hockey|puck|stick handling)\b/},
+ {name:"Cycling",re:/\b(bike ride|cycling|bicycle)\b/}];
+ let found=[];sports.forEach(x=>{if(x.re.test(t)){add(x.name);found.push(x.name)}});
+ // Physical/participatory language is required before suggesting movement abilities.
+ const physical=/\b(play(?:ed|ing)?|practice(?:d|s|ing)?|train(?:ed|ing)?|drill(?:ed|s|ing)?|throw(?:ing|n)?|threw|catch(?:ing)?|caught|hit(?:ting)?|bat(?:ting)?|kick(?:ed|ing)?|shoot(?:ing)?|dribbl(?:e|ed|ing)|run(?:ning)?|compete(?:d|s|ing)?|field(?:ed|ing)?|pitch(?:ed|ing)?|workout|exercise|swim(?:ming)?|dance(?:d|ing)?)\b/.test(t);
+ const onlyLearning=/\b(read|reading|book|watched|watching|video|listened|listening|learned about|studied|research)\b/.test(t)&&!physical;
+ if(found.length&&onlyLearning){add("Sports Strategy");}
+ if(found.length&&physical&&!onlyLearning){add("Coordination");if(/\b(team|teammate|coach|game|practice|played|together|pass(?:ed|ing)?)\b/.test(t))add("Teamwork");if(/\b(game|match|competition|competed|sportsmanship|win|lose|lost)\b/.test(t))add("Sportsmanship");if(/\b(focus|focused|concentrat|strategy|strategic|decision|read the play)\b/.test(t))add("Focus");if(/\b(run|running|sprint|endurance|long distance)\b/.test(t))add("Speed");if(/\b(strength|strong|lift|conditioning)\b/.test(t))add("Strength");if(/\b(practice|training|workout|exercise|drill)\b/.test(t))add("Fitness")}
+ if(/\b(chess)\b/.test(t))add("Strategy","Critical Thinking","Focus");
+ if(/\b(cook|bake|recipe|meal|prepare dinner|sandwich|smoothie|crack(?:ing)? eggs)\b/.test(t))add("Cooking","Math","Responsibility");
+ if(/\b(help|helped|serve|served|volunteer|cleaned|chores|helping)\b/.test(t))add("Helping Others","Responsibility","Kindness");
+ if(/\b(workout|exercise|weight training|lifted weights|fitness)\b/.test(t))add("Fitness","Discipline","Strength");
+ if(/\b(build|built|lego|craft project|problem solving)\b/.test(t))add("Building & Making","Problem Solving","Creativity");
+ if(/\b(family|friend|group|conversation|discussed|talked)\b/.test(t))add("Communication");
+ if(/\b(focus|concentrat|study|lesson|learned|strategy|planned)\b/.test(t))add("Focus");
+ if(/\b(outside|garden|hike|camp|nature|woods|park|animals)\b/.test(t))add("Nature & Outdoors");
+ return [...out].filter(n=>BASE_SKILLS.includes(n)||EXTRA_SKILLS.includes(n)||child().skills.some(s=>s.name===n));
+}
+function submitActivity(minutes,effort){const chips=[...document.querySelectorAll("#suggestedChips .chip.selected")],names=chips.map(x=>x.dataset.skill);if(!names.length){document.getElementById("suggestionArea").insertAdjacentHTML("afterbegin",`<div class="notice">Not submitted yet: choose at least one suggested skill above. Tap a skill to turn it on, then press Submit activity again.</div>`);return}const c=child(),missing=names.filter(n=>!c.skills.some(s=>s.name===n));if(missing.length){document.getElementById("suggestionArea").insertAdjacentHTML("afterbegin",`<div class="notice"><b>Not submitted yet.</b> These selected skills are not on this child’s skill list: ${missing.map(esc).join(", ")}. Tap “＋ Add” beside each one you want to track. When each says “Added ✓”, press Submit activity again.</div>`);return}const before=achievementChecks(c).filter(x=>x[2]).map(x=>x[0]);const xp=xpFor(minutes,effort),activity={id:uid(),text:suggestionText,type:"Activity",minutes,xp,skills:names,date:new Date().toISOString()};awardActivityXP(c,names,xp,activity);c.activities.push(activity);save();document.getElementById("activityText").value="";document.getElementById("suggestionArea").innerHTML="";document.getElementById("activityMinutes").value="20";render();celebrateNewAchievements(before);toast("Activity saved! +"+xp+" XP 🎉");showTab("home")}
 
-// ========================================
-// COMPLETE SKILL LIBRARY
-// ========================================
-
-const BASE_SKILLS = [
-"Reading","Writing","Math","Science","History",
-"Art & Creativity","Music","Sportsmanship","Teamwork",
-"Leadership","Communication","Problem Solving",
-"Critical Thinking","Focus","Discipline","Responsibility",
-"Kindness","Helping Others","God Relationship","Cooking",
-"Building & Making","Technology","Nature & Outdoors",
-"Fitness","Strength","Speed","Coordination","Balance"
-];
-
-const ADDITIONAL_SKILLS = [
-"Baseball","Basketball","Football","Soccer","Golf",
-"Tennis","Pickleball","Swimming","Running","Cycling",
-"Dance","Gymnastics","Martial Arts","Volleyball","Hockey",
-"Fishing","Gardening","Animals & Pet Care","Public Speaking",
-"Entrepreneurship","Money Skills","Geography","Languages",
-"Research","Memory","Strategy","Creativity","Drawing",
-"Painting","Photography","Video Production","Coding","Chess",
-"Team Leadership","Empathy","Patience","Resilience",
-"Self-Control","Courage","Gratitude","Serving Others",
-"First Aid","Outdoor Survival","Carpentry","Sewing",
-"Music Performance","Singing","Instruments","Nutrition",
-"Healthy Habits","Flexibility","Endurance","Agility","Hiking",
-"Camping","Public Service","Organization","Time Management",
-"Goal Setting","Listening","Debate","Engineering","Design",
-"Theater","Acting","Reading Comprehension","Research Skills",
-"Scientific Method","Faith & Character","Conflict Resolution",
-"Sports Strategy","Cooperation","Fine Motor Skills",
-"Decision Making","Adaptability","Confidence","Teaching",
-"Mentoring","Volunteering","World Cultures","Weather",
-"Space & Astronomy","Plants","Wildlife","Digital Citizenship",
-"Media Literacy","Crafts","Puzzles","Logic"
-];
-
-const ALL_SKILLS = [...BASE_SKILLS,...ADDITIONAL_SKILLS];
-
-// ========================================
-// SKILL CATEGORIES
-// ========================================
-
-const CATEGORIES = {
-"Reading":"Learning","Writing":"Learning","Math":"Learning",
-"Science":"Learning","History":"Learning",
-"Art & Creativity":"Creative Arts","Music":"Creative Arts",
-"Drawing":"Creative Arts","Painting":"Creative Arts",
-"Photography":"Creative Arts","Video Production":"Creative Arts",
-"Theater":"Creative Arts","Acting":"Creative Arts",
-"Baseball":"Sports","Basketball":"Sports","Football":"Sports",
-"Soccer":"Sports","Golf":"Sports","Tennis":"Sports",
-"Pickleball":"Sports","Swimming":"Sports","Running":"Sports",
-"Cycling":"Sports","Dance":"Sports","Gymnastics":"Sports",
-"Volleyball":"Sports","Hockey":"Sports",
-"Fitness":"Health & Movement","Strength":"Health & Movement",
-"Speed":"Health & Movement","Coordination":"Health & Movement",
-"Balance":"Health & Movement",
-"Cooking":"Life Skills","Money Skills":"Life Skills",
-"Time Management":"Life Skills","Organization":"Life Skills",
-"Animals & Pet Care":"Life Skills","Gardening":"Life Skills",
-"Carpentry":"Life Skills","Sewing":"Life Skills",
-"Coding":"Technology","Technology":"Technology",
-"Digital Citizenship":"Technology","Media Literacy":"Technology",
-"Kindness":"Character","Empathy":"Character",
-"Patience":"Character","Resilience":"Character",
-"Courage":"Character","Gratitude":"Character",
-"Responsibility":"Character","Discipline":"Character",
-"Leadership":"Character",
-"God Relationship":"Faith & Service",
-"Faith & Character":"Faith & Service",
-"Serving Others":"Faith & Service",
-"Volunteering":"Faith & Service",
-"Public Service":"Faith & Service"
+const SKILL_IDEAS={
+"Cooking":["Make a sandwich","Make a smoothie","Practice cracking eggs into a bowl","Measure ingredients for a simple recipe","Help prepare one part of dinner"],
+"Baseball":["Play catch for 10 minutes","Practice batting off a tee","Field 10 ground balls","Practice throwing to a target","Learn one baseball rule and explain it"],
+"Football":["Practice throwing spirals","Run a short passing route","Catch 10 passes","Practice carrying the ball safely","Watch a play and explain the strategy"],
+"Basketball":["Dribble 20 times with each hand","Shoot 10 close-range baskets","Practice layups","Pass with a partner","Practice a defensive slide"],
+"Soccer":["Dribble through five cones","Pass with both feet","Shoot at a target","Juggle the ball","Practice a throw-in"],
+"Golf":["Putt 10 balls toward a target","Practice a short chip","Learn how to hold a golf club","Keep score for a practice round","Watch a swing and identify one helpful tip"],
+"Tennis":["Rally with a partner","Practice forehand swings","Practice backhand swings","Hit 10 serves","Learn how to keep score"],
+"Pickleball":["Practice 10 gentle volleys","Serve diagonally into the court","Rally with a partner","Practice moving to the kitchen line","Learn the double-bounce rule"],
+"Reading":["Read for 10 minutes","Read a story aloud","Choose a topic and learn three facts","Read a recipe and follow its steps","Visit the library and choose a new book"],
+"Writing":["Write a short story","Keep a three-sentence journal","Write a thank-you note","Create a comic strip","Write instructions for a favorite game"],
+"Math":["Count coins and make a total","Measure ingredients for a snack","Compare prices at a store","Solve five mental-math problems","Keep score during a game"],
+"Science":["Grow a seed and record what changes","Test which objects sink or float","Track the weather for a week","Build and test a paper airplane","Ask a question and investigate the answer"],
+"God Relationship":["Read a short Bible passage","Pray for someone by name","Attend church with family","Learn the words to a worship song","Talk about how to live out a Bible teaching"],
+"Music":["Learn a short song","Practice an instrument for 10 minutes","Clap and repeat a rhythm","Listen for different instruments","Create your own rhythm"],
+"Art & Creativity":["Draw something you see","Make a card for someone","Create something from recycled materials","Paint using three colors","Design a character or comic"],
+"Writing":["Write a short story","Keep a three-sentence journal","Write a thank-you note","Create a comic strip","Write instructions for a favorite game"],
+"Teamwork":["Build something with another person","Play a game where everyone has a role","Help a teammate learn a skill","Plan a family task together","Practice encouraging a teammate"],
+"Sportsmanship":["Congratulate someone after a game","Practice following the rules","Be a good winner and loser","Encourage a teammate who is learning","Talk about a fair-play decision"],
+"Coordination":["Try a safe balance course","Bounce and catch a ball","Practice a two-step dance","Complete a simple obstacle course","Try a new movement pattern"],
+"Fitness":["Take a family walk","Do a short movement circuit","Stretch safely for five minutes","Try a fun active game","Set and complete a small movement goal"],
+"Strength":["Do age-appropriate bodyweight movements","Carry light groceries with good posture","Try a supervised animal-walk course","Practice a wall sit","Help with a safe household task"],
+"Speed":["Run a few short, safe races","Practice quick feet through cones","Play a short tag game","Time a short run and try again","Practice quick starts and stops"],
+"Balance":["Stand on one foot and switch sides","Walk heel-to-toe along a line","Try a safe balance pose","Practice balancing while reaching","Make a simple balance path"],
+"Nature & Outdoors":["Identify five plants outside","Watch birds for ten minutes","Plant or water something","Collect and sort nature items respectfully","Take a short nature walk"],
+"History":["Ask a family member about the past","Read about a historical person","Make a simple timeline","Visit a local historical site","Compare then and now"],
+"Technology":["Create a simple slideshow","Practice safe searching with an adult","Learn what parts make a computer work","Make a short digital drawing","Organize files with help"],
+"Building & Making":["Build a tower from household materials","Follow simple building instructions","Make a cardboard invention","Test and improve a paper airplane","Build something with blocks or LEGO"],
+"Chess":["Play a short chess game","Practice checkmate with a queen and king","Solve three chess puzzles","Learn one opening idea","Explain why a move is safe"],
+"Gardening":["Plant a seed","Water a garden carefully","Remove weeds with an adult","Track plant growth","Learn what a plant needs to grow"],
+"Animals & Pet Care":["Refresh a pet's water with an adult","Brush a pet gently if appropriate","Learn an animal's needs","Help clean a pet area safely","Observe animal behavior respectfully"],
+"Communication":["Tell someone about your day","Practice asking a clear question","Explain how to play a game","Listen and repeat what you heard","Share an idea with your family"],
+"Responsibility":["Pack your own bag","Put away your things","Help prepare for tomorrow","Complete a household job","Take care of something you use"],
+"Kindness":["Give someone a sincere compliment","Make a card for someone","Invite someone to join a game","Help without being asked","Check in on someone who needs encouragement"],
+"Problem Solving":["Solve a puzzle","Fix or improve something with help","Find two ways to complete a task","Build a bridge from simple materials","Explain how you solved a problem"],
+"Critical Thinking":["Compare two ideas","Ask what evidence supports a claim","Solve a logic puzzle","Explain why you chose an answer","Spot the main idea in a story"],
+"Focus":["Work on one task for ten minutes","Complete a puzzle without switching tasks","Practice a skill with fewer distractions","Follow a three-step direction","Set a small goal and finish it"],
+"Discipline":["Practice a skill on three different days","Finish a task before screen time","Follow a simple routine","Keep working after a mistake","Prepare what you need ahead of time"],
+"Leadership":["Help a group choose a fair plan","Take responsibility for one team role","Show someone how to do a task","Encourage a group to keep trying","Lead a family game"],
+"Helping Others":["Help set the table","Carry something appropriate for your age","Help a neighbor with an adult","Tidy a shared space","Ask someone what help they need"],
+"Nutrition":["Build a balanced snack","Help wash fruit","Read a food label with an adult","Try a new fruit or vegetable","Help plan a family meal"],
+"Endurance":["Take a longer family walk","Play an active game for several minutes","Swim with adult supervision","Ride a bike with safety gear","Build activity time gradually"],
+"Agility":["Move through a cone path","Play a safe tag game","Practice side steps","Try a short footwork pattern","Change direction around markers"],
+"Memory":["Play a matching game","Memorize a short poem","Recall five things from a story","Practice a card memory game","Learn and repeat a new sequence"],
+"Strategy":["Plan a move ahead in a board game","Watch a sports play and predict what happens","Play a simple strategy game","Explain a plan before trying it","Review what worked after a game"],
+"Creativity":["Invent a new game","Make up a story ending","Design a new playground","Create something from recycled materials","Draw an idea you imagined"],
+"Gratitude":["Name three things you are thankful for","Write a thank-you note","Tell someone why you appreciate them","Keep a gratitude list","Pray and give thanks"],
+"Patience":["Practice waiting your turn","Work on a puzzle without rushing","Grow a plant and check it over time","Practice a skill slowly","Take turns choosing a family activity"],
+"Resilience":["Try a skill again after a mistake","Choose a small challenge and finish it","Talk about what you learned from a setback","Practice something that feels difficult","Celebrate improvement, not perfection"]
 };
+function ideasFor(skill){return SKILL_IDEAS[skill]||[`Try a beginner ${skill.toLowerCase()} activity with an adult or coach`,`Practice ${skill.toLowerCase()} for 10 minutes`,`Learn three useful facts about ${skill.toLowerCase()}`,`Use ${skill.toLowerCase()} in a real-life situation`,`Teach someone one thing you learned about ${skill.toLowerCase()}`]}
+function renderIdeas(){const q=(document.getElementById("ideaSearch")?.value||"").toLowerCase(),list=child().skills.filter(x=>x.name.toLowerCase().includes(q));document.getElementById("ideaList").innerHTML=list.map(x=>{const a=ideasFor(x.name);return `<div class="idea-card"><div class="row"><b>${esc(x.name)}</b><span class="tag">Level ${level(x.xp)} · ${x.xp} XP</span></div><p class="muted">What can I do today to get better?</p><div><span class="idea-level">Beginner</span>${esc(a[0])}</div><div><span class="idea-level">Intermediate</span>${esc(a[1]||a[0])}</div><div><span class="idea-level">Advanced</span>${esc(a[2]||a[a.length-1])}</div><div class="row wrap" style="margin-top:10px"><button class="btn secondary small" onclick="logIdea('${esc(x.name)}')">＋ Log an activity</button><button class="btn small" onclick="makeSkillGoal('${esc(x.name)}')">Make this a goal</button></div></div>`}).join("")||'<div class="empty">No matching skills on this profile.</div>'}
+function makeSkillGoal(skill){const idea=ideasFor(skill)[0];child().challenges.push({id:uid(),title:skill+": "+idea,detail:"Try this activity and log your progress when finished.",skill,difficulty:"Easy",done:false});save();showTab("challenges");toast("Goal added!")}
+const CHALLENGE_LEVELS={Easy:"Start small and build confidence",Medium:"Practice with a little more focus",Challenging:"Try a bigger personal best safely"};
+function challengeFor(skill,difficulty){const ideas=ideasFor(skill),idx=difficulty==="Easy"?0:difficulty==="Medium"?1:Math.min(2,ideas.length-1);return ideas[idx]||ideas[0]}
+function addSuggestedChallenge(skill,difficulty){const detail=challengeFor(skill,difficulty);child().challenges.push({id:uid(),title:skill+": "+detail,detail:CHALLENGE_LEVELS[difficulty],skill,difficulty,done:false});save();renderChallenges();toast("Challenge added!")}
 
-// ========================================
-// 20 ACTIVITY IDEAS PER SKILL
-// ========================================
-
-const TEMPLATES = {
-
-Sports:[
-"Practice the basic stance and demonstrate it five times.",
-"Set up a safe target and aim for ten controlled attempts.",
-"Teach a family member one fundamental skill.",
-"Watch a short instructional clip and practice one takeaway.",
-"Create a five-minute warm-up for this skill.",
-"Practice footwork slowly, then repeat at normal speed.",
-"Keep a practice log and record one improvement.",
-"Design a three-step beginner drill.",
-"Practice with both sides or hands when appropriate.",
-"Explain one safety rule and demonstrate it.",
-"Set a personal best that is safe and realistic.",
-"Practice accuracy before adding speed.",
-"Play a short skill-based game with a family member.",
-"Break one difficult movement into three smaller steps.",
-"Observe a skilled performer and identify three techniques.",
-"Create a mini obstacle course for this skill.",
-"Practice for ten focused minutes and reflect.",
-"Demonstrate the skill and ask for one helpful tip.",
-"Make a progress chart for the next seven days.",
-"Teach the skill back in your own words."
-],
-
-Learning:[
-"Read or review a short piece and summarize the main idea.",
-"Teach a family member three facts you learned.",
-"Make five flashcards and test yourself.",
-"Find the answer to a question and explain your source.",
-"Create a one-page visual explanation.",
-"Connect the topic to something in everyday life.",
-"Write three questions you still have.",
-"Explain the idea without looking at your notes.",
-"Make a simple quiz for someone else.",
-"Compare two examples and describe the difference.",
-"Practice for ten focused minutes.",
-"Draw a diagram that explains the concept.",
-"Find a real-world example at home or outside.",
-"Create a short story using the new idea.",
-"Record a one-minute explanation.",
-"Make a list of five key words and define them.",
-"Solve a new example and show your steps.",
-"Ask an adult a question and record the answer.",
-"Review yesterday's learning and add one new fact.",
-"Teach the concept to a younger family member."
-],
-
-Creative:[
-"Create an original piece using materials you already have.",
-"Try a new technique and compare the result.",
-"Study one example and identify three choices the creator made.",
-"Make a small project in fifteen minutes.",
-"Use only three colors or materials.",
-"Create something inspired by nature.",
-"Explain the idea behind your creation.",
-"Remix an old project into something new.",
-"Teach someone one basic technique.",
-"Make a step-by-step plan before starting.",
-"Practice one technique slowly for ten minutes.",
-"Create a gift or useful item for someone.",
-"Document the process with three photos.",
-"Try the same idea in two different styles.",
-"Ask for feedback and make one revision.",
-"Create a project using recycled materials.",
-"Make a mini gallery or performance for family.",
-"Learn the history of one style or instrument.",
-"Combine two skills in one creation.",
-"Reflect on what you would try next time."
-],
-
-Life:[
-"Complete a safe, age-appropriate task with adult guidance.",
-"Plan the steps before beginning.",
-"Measure or count what you need.",
-"Compare two choices and explain which is better.",
-"Teach a family member one useful tip.",
-"Make a checklist and follow it.",
-"Practice the skill for ten minutes.",
-"Find a way to make the task safer or easier.",
-"Explain the tools or materials needed.",
-"Do the task together and take turns.",
-"Create a simple budget or plan.",
-"Organize the supplies before starting.",
-"Record what worked and what you would change.",
-"Practice the skill in a real-life situation.",
-"Ask an adult to demonstrate, then try it yourself.",
-"Make a visual guide for the task.",
-"Set a small goal for this week.",
-"Help someone else complete the task.",
-"Identify one common mistake and how to avoid it.",
-"Reflect on how this skill builds independence."
-],
-
-Character:[
-"Notice one opportunity to practice this quality today.",
-"Choose a small goal and follow through.",
-"Write about a moment when this skill mattered.",
-"Practice it during a family activity.",
-"Recognize someone else who demonstrates this quality.",
-"Make a plan for using it when things get difficult.",
-"Ask a family member for an example.",
-"Practice for one full day and reflect.",
-"Create a reminder card with one helpful action.",
-"Use this skill to help someone.",
-"Describe what this quality looks and sounds like.",
-"Role-play a challenging situation.",
-"Identify one obstacle and a healthy response.",
-"Keep a short reflection journal for three days.",
-"Give someone specific, sincere encouragement.",
-"Practice listening without interrupting.",
-"Make a repair after a mistake when appropriate.",
-"Set a weekly goal and check your progress.",
-"Explain why this skill matters in a community.",
-"Teach the idea through a real example."
-]
-
-};
-
-// ========================================
-// APP DATA
-// ========================================
-
-const state = JSON.parse(
-localStorage.getItem("rlg_demo") ||
-'{"xp":{},"challenges":[],"profiles":[]}'
-);
-
-const esc = s => String(s).replace(/[&<>"']/g,c=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",
-'"':"&quot;","'":"&#39;"
-}[c]));
-
-function category(skill){
-if(CATEGORIES[skill]) return CATEGORIES[skill];
-if([
-"Sportsmanship","Teamwork","Leadership","Communication",
-"Focus","Discipline","Responsibility","Kindness",
-"Helping Others"
-].includes(skill)) return "Character";
-return "Life Skills";
+function logIdea(skill){showTab("log");document.getElementById("activityText").value=ideasFor(skill)[0];analyzeActivity()}
+function renderVideos(){let items=db.videos||[];document.getElementById("videoList").innerHTML=items.length?items.map((v,i)=>`<div class="activity"><b>${esc(v.title)}</b><p class="muted">${esc(v.skill||"General learning")}</p><a style="color:var(--blue)" href="${esc(v.url)}" target="_blank" rel="noopener">Open video ↗</a> <button class="btn danger small" onclick="removeVideo(${i})">Delete</button></div>`).join(""):'<div class="empty">No videos added yet. Parents can add reviewed YouTube or Instagram links.</div>'}
+function addVideo(){let title=document.getElementById("videoTitle").value.trim(),url=document.getElementById("videoURL").value.trim(),skill=document.getElementById("videoSkill").value.trim();if(!title||!/^https?:\/\//i.test(url))return toast("Add a title and a valid http/https link.");db.videos=db.videos||[];db.videos.push({title,url,skill});save();renderVideos();document.getElementById("videoTitle").value="";document.getElementById("videoURL").value="";document.getElementById("videoSkill").value="";toast("Video link saved")}
+function removeVideo(i){db.videos.splice(i,1);save();renderVideos()}
+function renderLocal(){
+ const items=db.localListings||[];
+ const samples=[
+  {name:"Northside Baseball Lab",service:"Youth baseball instruction · hitting, throwing mechanics, fielding fundamentals",area:"Sample service area: The Woodlands & Spring",about:"Small-group sessions for young players, with a focus on confidence, fundamentals, and having fun.",contact:"Example only · northside-baseball.example",category:"BASEBALL TRAINING",icon:"⚾"},
+  {name:"Kitchen Explorers Studio",service:"Kids cooking classes · kitchen safety, simple meals, baking basics",area:"Sample service area: The Woodlands & Conroe",about:"Hands-on cooking experiences where kids learn to prepare snacks and family-friendly recipes.",contact:"Example only · kitchen-explorers.example",category:"COOKING CLASSES",icon:"🥣"},
+  {name:"Friday Night Football Skills",service:"Youth football training · footwork, catching, teamwork, game awareness",area:"Sample service area: Spring & nearby communities",about:"Beginner-friendly skill sessions designed around movement, teamwork, and safe practice.",contact:"Example only · friday-football.example",category:"FOOTBALL TRAINING",icon:"🏈"}
+ ];
+ const sampleHTML=samples.map(v=>`<article class="sample-card"><div class="row wrap"><span class="sample-badge">Prototype example · not a real business</span><span class="tag">${v.category}</span></div><div class="row" style="justify-content:flex-start;margin-top:8px"><span style="font-size:34px">${v.icon}</span><div><h3>${v.name}</h3><div class="sample-meta">${v.area}</div></div></div><p>${v.service}</p><p class="muted">${v.about}</p><div class="sample-meta">${v.contact}</div><button class="btn secondary small" disabled title="Example listing only">Contact details coming soon</button></article>`).join("");
+ const liveHTML=items.map((v,i)=>`<div class="activity"><div class="row wrap"><b>${esc(v.name)}</b><span class="sample-badge" style="background:#183c35;color:#b9f4df;border-color:#397d6a">Family-added listing</span></div><p>${esc(v.service)} · ${esc(v.area)}</p><p class="muted">${esc(v.contact||"Contact provider for details")}</p><button class="btn danger small" onclick="removeLocal(${i})">Remove listing</button></div>`).join("");
+ document.getElementById("localList").innerHTML=`<div class="notice"><b>Prototype preview:</b> The three featured providers below are fictional examples created to show how local advertising could look. They are not real businesses, endorsements, or contact information.</div><h3>Featured in your community</h3>${sampleHTML}${items.length?`<h3 style="margin-top:22px">Your family-added listings</h3>${liveHTML}`:""}`;
 }
+function addLocalListing(){let name=document.getElementById("localName").value.trim(),service=document.getElementById("localService").value.trim(),area=document.getElementById("localArea").value.trim(),contact=document.getElementById("localContact").value.trim();if(!name||!service||!area)return toast("Add the business name, service, and area.");db.localListings=db.localListings||[];db.localListings.push({name,service,area,contact});save();renderLocal();["localName","localService","localArea","localContact"].forEach(id=>document.getElementById(id).value="");toast("Local listing added")}
+function removeLocal(i){db.localListings.splice(i,1);save();renderLocal()}
 
-function ideasFor(skill){
-let c=category(skill);
-let t=(c==="Sports"||c==="Health & Movement")
-?TEMPLATES.Sports
-:c==="Learning"?TEMPLATES.Learning
-:c==="Creative Arts"?TEMPLATES.Creative
-:(c==="Character"||c==="Faith & Service")
-?TEMPLATES.Character:TEMPLATES.Life;
-return t;
+function renderProfile(){let c=child();document.getElementById("profileList").innerHTML=db.children.map(x=>`<div class="profile"><div class="avatar">${artFor(x,level(x.xp))}</div><div class="grow"><b>${esc(x.name)}</b><small class="muted">${x.xp} XP · Level ${level(x.xp)}</small></div><button class="btn small ${x.id===activeId?"":"secondary"}" onclick="selectChild('${x.id}')">${x.id===activeId?"Selected":"Open"}</button><button class="btn danger small" onclick="deleteChild('${x.id}')">Delete</button></div>`).join("");document.getElementById("editName").value=c.name;document.getElementById("editCharacter").value=c.kind;let history=c.activities.slice().reverse();document.getElementById("parentActivityList").innerHTML=history.length?history.map(a=>activityHTML(a)).join(""):'<div class="empty">No activities have been logged yet.</div>'}
+function selectChild(id){activeId=id;render();showTab("home");toast("Switched profile")}
+function saveProfile(){let c=child(),name=document.getElementById("editName").value.trim();if(!name){toast("Please enter a name.");return}c.name=name;c.kind=document.getElementById("editCharacter").value;render();toast("Profile saved")}
+function openAddChild(){modal(`<h2>Add a child</h2><label>Child's name</label><input id="childName" placeholder="Name"><label>Choose a character</label><select id="childKind"><option value="boy">Boy adventurer</option><option value="girl">Girl adventurer</option><option value="lion">Lion</option><option value="tiger">Tiger</option><option value="wolf">Wolf</option><option value="bear">Bear</option><option value="dragon">Dragon</option><option value="unicorn">Unicorn</option><option value="fox">Fox</option></select><button class="btn" onclick="createChild()">Create profile</button><button class="btn secondary" onclick="closeModal()">Cancel</button>`)}
+function createChild(){let n=document.getElementById("childName").value.trim();if(!n){toast("Enter a name.");return}let c=freshChild(n,document.getElementById("childKind").value);db.children.push(c);activeId=c.id;closeModal();render();showTab("home");toast("New explorer created!")}
+function deleteChild(id){let c=db.children.find(x=>x.id===id);if(!c)return;if(!confirm(`Delete ${c.name}'s profile and all of that child's progress? Sibling profiles will not be affected. This cannot be undone unless you exported a backup.`))return;db.children=db.children.filter(x=>x.id!==id);if(!db.children.length){let n=freshChild("Explorer","boy");db.children=[n];activeId=n.id}else if(activeId===id)activeId=db.children[0].id;render();toast("Profile deleted. Other profiles are safe.")}
+function renderChallenges(){let c=child();document.getElementById("challengeIdeas").innerHTML=`<h3>Pick a skill to grow</h3><p class="muted">Choose a specific action. Easy, medium, and challenging ideas are available for every skill in this profile.</p><div class="challenge-suggestions">${c.skills.map(x=>`<div class="challenge-suggestion"><b>${esc(x.name)}</b><p>${esc(challengeFor(x.name,"Easy"))}</p><div class="row wrap"><button class="btn secondary small" onclick="addSuggestedChallenge('${esc(x.name)}','Easy')">Easy</button><button class="btn secondary small" onclick="addSuggestedChallenge('${esc(x.name)}','Medium')">Medium</button><button class="btn secondary small" onclick="addSuggestedChallenge('${esc(x.name)}','Challenging')">Challenge</button></div></div>`).join("")}</div>`;document.getElementById("challengeList").innerHTML=c.challenges.length?c.challenges.map(a=>`<div class="activity"><div class="row"><b>${esc(a.title)}</b><span class="tag">${a.done?"Completed":"In progress"}</span></div><p class="muted">${esc(a.detail||"")}</p><button class="btn small" ${a.done?"disabled":""} onclick="completeChallenge('${a.id}')">${a.done?"Done ✓":"Mark complete"}</button> <button class="btn danger small" onclick="deleteChallenge('${a.id}')">Remove</button></div>`).join(""):'<div class="empty">No challenges yet. Choose one above or create your own.</div>'}
+
+function openChallenge(){modal(`<h2>Create a challenge</h2><label>Challenge title</label><input id="challengeTitle" placeholder="Read for 10 minutes"><label>What will you do?</label><textarea id="challengeDetail" placeholder="Describe your goal"></textarea><button class="btn" onclick="saveChallenge()">Save challenge</button><button class="btn secondary" onclick="closeModal()">Cancel</button>`)}
+function saveChallenge(){let title=document.getElementById("challengeTitle").value.trim();if(!title)return toast("Add a title.");child().challenges.push({id:uid(),title,detail:document.getElementById("challengeDetail").value,done:false});closeModal();renderChallenges()}
+function completeChallenge(id){let c=child(),a=c.challenges.find(x=>x.id===id);if(a&&!a.done){a.done=true;c.xp+=10;save();render();toast("Challenge complete! +10 XP")}}
+function deleteChallenge(id){child().challenges=child().challenges.filter(x=>x.id!==id);renderChallenges()}
+function achievementChecks(c){return [["First steps","Log your first activity",c.activities.length>=1],["Curious mind","Grow 5 different skills",c.skills.filter(s=>s.xp>0).length>=5],["Getting consistent","Log 5 activities",c.activities.length>=5],["Big effort","Earn 100 total XP",c.xp>=100],["Skill explorer","Add a custom or extra skill",c.skills.length>BASE_SKILLS.length],["Superhero in training","Reach Level 21",level(c.xp)>=21]]}
+function celebrateNewAchievements(before){let c=child(),now=achievementChecks(c),fresh=now.filter((x,i)=>x[2]&&!(before||[]).includes(x[0])).map(x=>x[0]);if(fresh.length){c.unlocked=c.unlocked||[];fresh.forEach(n=>{if(!c.unlocked.includes(n))c.unlocked.push(n)});modal(`<div class="celebration"><div class="trophy">🏆✨🎉</div><div class="eyebrow">A BIG MOMENT!</div><h2>Achievement unlocked!</h2><h3>${esc(fresh[0])}</h3><p class="muted">You earned this through your effort. Take a moment to celebrate!</p>${fresh.length>1?`<p>Also unlocked: ${fresh.slice(1).map(esc).join(", ")}</p>`:""}<button class="btn" onclick="closeModal()">Celebrate!</button></div>`);}
 }
-
-function save(){
-localStorage.setItem("rlg_demo",JSON.stringify(state));
-render();
-}
-
-function xp(skill){return state.xp[skill]||0}
-
-function level(skill){
-return Math.min(26,Math.max(1,
-Math.floor(Math.sqrt(xp(skill)/100))+1));
-}
-
-function showNotice(msg){
-let n=document.getElementById("notice");
-n.textContent=msg;
-n.classList.remove("hidden");
-setTimeout(()=>n.classList.add("hidden"),3000);
-}
-
-// ========================================
-// NAVIGATION
-// ========================================
-
-function switchTab(tab){
-document.querySelectorAll("main section")
-.forEach(s=>s.classList.add("hidden"));
-
-document.getElementById("page-"+tab)
-.classList.remove("hidden");
-
-document.querySelectorAll("#nav button")
-.forEach(b=>b.classList.toggle(
-"selected",b.dataset.tab===tab
-));
-
-if(tab==="Skills")renderSkills();
-}
-
-document.querySelectorAll("#nav button")
-.forEach(b=>b.addEventListener("click",
-()=>switchTab(b.dataset.tab)
-));
-
-// ========================================
-// SKILLS
-// ========================================
-
-function renderSkills(){
-
-let q=(document.getElementById("skillSearch").value||"")
-.toLowerCase();
-
-let html=ALL_SKILLS
-.filter(s=>s.toLowerCase().includes(q)||
-category(s).toLowerCase().includes(q))
-.map(s=>`
-
-<article class="card">
-
-<div class="cardtop">
-<h3>${esc(s)}</h3>
-<span class="pill">
-Level ${level(s)} · ${xp(s)} XP
-</span>
-</div>
-
-<p class="fine">${esc(category(s))}</p>
-
-<details>
-<summary style="cursor:pointer;color:#f3c66e;font-weight:700">
-View 20 activity ideas
-</summary>
-
-<div class="skill-ideas">
-
-${ideasFor(s).map((idea,i)=>`
-<div class="idea">
-<span>${i+1}. ${esc(idea)}</span>
-
-<button class="secondary"
-data-skill="${encodeURIComponent(s)}"
-data-title="${encodeURIComponent(idea)}"
-onclick="addChallengeEncoded(this)">
-Add
-</button>
-</div>
-`).join("")}
-
-</div>
-</details>
-</article>
-
-`).join("");
-
-document.getElementById("skillGrid").innerHTML=
-html||'<div class="empty">No skills match that search.</div>';
-}
-
-function addChallengeEncoded(button){
-addChallenge(
-decodeURIComponent(button.dataset.skill),
-decodeURIComponent(button.dataset.title)
-);
-}
-
-document.getElementById("skillSearch")
-.addEventListener("input",renderSkills);
-
-// ========================================
-// CHALLENGES AND XP
-// ========================================
-
-function addChallenge(skill,title){
-
-if(state.challenges.some(c=>
-c.skill===skill&&c.title===title&&!c.done)){
-showNotice("That challenge is already on your list.");
-return;
-}
-
-state.challenges.push({
-id:Date.now()+Math.random(),
-skill,title,done:false
-});
-
-save();
-showNotice("Added to your challenges!");
-}
-
-function completeChallenge(id){
-
-let c=state.challenges.find(x=>x.id===id);
-
-if(!c||c.done)return;
-
-c.done=true;
-state.xp[c.skill]=(state.xp[c.skill]||0)+10;
-
-save();
-showNotice("Completed! +10 XP for "+c.skill);
-}
-
-function removeChallenge(id){
-state.challenges=state.challenges.filter(c=>c.id!==id);
-save();
-}
-
-function renderChallenges(){
-
-let el=document.getElementById("challengeList");
-
-el.innerHTML=state.challenges.length
-?state.challenges.map(c=>`
-
-<div class="challenge">
-
-<div class="cardtop">
-<div>
-<b>${esc(c.skill)}: ${esc(c.title)}</b>
-<p class="fine">
-${c.done?"Completed · +10 XP":"In progress"}
-</p>
-</div>
-
-<span class="pill">
-${c.done?"Complete":"In progress"}
-</span>
-</div>
-
-<div class="actions">
-
-${c.done?"":`
-<button onclick="completeChallenge(${c.id})">
-Mark complete
-</button>
-`}
-
-<button class="danger"
-onclick="removeChallenge(${c.id})">
-Remove
-</button>
-
-</div>
-</div>
-
-`).join("")
-:'<div class="empty">No challenges yet. Open any skill above and add an activity.</div>';
-}
-
-// ========================================
-// HOME
-// ========================================
-
-function renderHome(){
-
-let active=Object.keys(state.xp)
-.filter(s=>xp(s)>0);
-
-document.getElementById("activeCount").textContent=active.length;
-
-document.getElementById("totalXp").textContent=
-Object.values(state.xp).reduce((a,b)=>a+b,0);
-
-document.getElementById("goalCount").textContent=
-state.challenges.filter(c=>!c.done).length;
-
-document.getElementById("homeSkills").innerHTML=
-active.length
-?active.slice(0,8).map(s=>`
-<article class="card">
-<h3>${esc(s)}</h3>
-<p class="muted">Level ${level(s)} · ${xp(s)} XP</p>
-</article>
-`).join("")
-:'<div class="empty">Your growth journey starts with one small activity. Explore the full skill library.</div>';
-}
-
-// ========================================
-// FAMILY PROFILES
-// ========================================
-
-function renderProfiles(){
-
-document.getElementById("profiles").innerHTML=
-state.profiles.length
-?state.profiles.map(p=>`
-<div class="card">
-<b>${esc(p.name)}</b>
-<p class="fine">Born ${esc(p.year)}</p>
-</div>
-`).join("")
-:'<p class="fine">No family profiles added yet.</p>';
-}
-
-document.getElementById("addChild")
-.addEventListener("click",()=>{
-
-let name=document.getElementById("childName").value.trim();
-let year=document.getElementById("birthYear").value;
-
-if(!name||!year){
-showNotice("Enter a name and birth year.");
-return;
-}
-
-state.profiles.push({name,year});
-
-document.getElementById("childName").value="";
-document.getElementById("birthYear").value="";
-
-save();
-renderProfiles();
-showNotice("Profile added.");
-});
-
-// ========================================
-// DEVELOPER-PUBLISHED CONTENT
-// ========================================
-
-// Only the Real Life Growth team publishes these.
-// Parents cannot submit or publish public content.
-
-const PUBLISHED_VIDEOS=[];
-const PUBLISHED_PROS=[];
-
-function renderContent(){
-
-document.getElementById("videoList").innerHTML=
-PUBLISHED_VIDEOS.length
-?PUBLISHED_VIDEOS.map(v=>`
-<article class="card">
-<h3>${esc(v.title)}</h3>
-<p>${esc(v.description)}</p>
-<a href="${esc(v.url)}" target="_blank" rel="noopener">
-Watch resource ↗
-</a>
-</article>
-`).join("")
-:'<div class="empty">New reviewed learning videos will appear here when the Real Life Growth team publishes them.</div>';
-
-document.getElementById("proList").innerHTML=
-PUBLISHED_PROS.length
-?PUBLISHED_PROS.map(p=>`
-<article class="card">
-<h3>${esc(p.name)}</h3>
-<p>${esc(p.category||"Local provider")}</p>
-<p>${esc(p.description)}</p>
-<p class="fine">${esc(p.city||"")}</p>
-${p.website?`
-<a href="${esc(p.website)}" target="_blank" rel="noopener">
-Website ↗
-</a>`:""}
-</article>
-`).join("")
-:'<div class="empty">Verified coaches, instructors, and businesses will appear here after review and publication by the Real Life Growth team.</div>';
-}
-
-// ========================================
-// INITIALIZE
-// ========================================
-
-function render(){
-renderHome();
-renderChallenges();
-renderProfiles();
-renderContent();
-}
-
-render();
+function renderAchievements(){let c=child(),checks=achievementChecks(c);document.getElementById("achievementList").innerHTML=checks.map(x=>`<div class="profile"><div class="avatar">${x[2]?"🏆":"☆"}</div><div class="grow"><b>${x[0]}</b><small class="muted">${x[1]}</small></div><span class="tag">${x[2]?"Unlocked":"Locked"}</span></div>`).join("")}
+function renderResources(){document.getElementById("resourceList").innerHTML=(db.resources||[]).map(r=>`<div class="activity"><b>${esc(r.title)}</b>${r.url?`<p><a style="color:var(--blue)" target="_blank" rel="noopener" href="${esc(r.url)}">Open resource ↗</a></p>`:""}</div>`).join("")}
+function addResource(){let title=document.getElementById("resourceTitle").value.trim(),url=document.getElementById("resourceURL").value.trim();if(!title)return toast("Add a title.");if(url&&!/^https?:\/\//i.test(url))return toast("Link must start with http:// or https://");db.resources=db.resources||[];db.resources.push({title,url});document.getElementById("resourceTitle").value="";document.getElementById("resourceURL").value="";renderResources();toast("Resource saved")}
+function resetSelected(){if(!confirm("Reset all progress for "+child().name+"? This only affects the selected child. Consider exporting a backup first."))return;let c=child();c.xp=0;c.skills.forEach(s=>s.xp=0);c.activities=[];c.pending=[];c.challenges=[];render();toast("Selected child's progress reset")}
+function exportData(){let blob=new Blob([JSON.stringify(db,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="real-life-growth-backup.json";a.click();URL.revokeObjectURL(url);toast("Backup downloaded")}
+function importData(){let inp=document.createElement("input");inp.type="file";inp.accept="application/json";inp.onchange=()=>{let f=inp.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let x=JSON.parse(rd.result);if(!Array.isArray(x.children)||!x.children.length)throw Error();x.children.forEach(normalizeChild);db=x;activeId=db.children[0].id;render();toast("Backup imported")}catch(e){toast("That backup file could not be read.")}};rd.readAsText(f)};inp.click()}
+function modal(html){document.getElementById("modalBox").innerHTML=html;document.getElementById("modal").classList.remove("hidden")}function closeModal(){document.getElementById("modal").classList.add("hidden")}
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
+render();showTab("home");
+
+// ===== Real Life Growth 2.2 functional upgrade layer =====
+const RLG_CATEGORIES=["Learning & Communication","STEM & Technology","Sports & Movement","Creative Arts","Character & Relationships","Life Skills","Nature & World"];
+function rlgCategory(name){const n=String(name).toLowerCase();if(/god relationship|faith|character|kindness|helping|empathy|patience|resilience|self-control|courage|gratitude|sportsmanship|teamwork|leadership|cooperation|conflict|serving|volunteering|mentoring/.test(n))return "Character & Relationships";if(/baseball|basketball|football|soccer|golf|tennis|pickleball|swimming|running|cycling|dance|gymnastics|martial|volleyball|hockey|fitness|strength|speed|coordination|balance|flexibility|endurance|agility|hiking|camping|fishing|sports strategy/.test(n))return "Sports & Movement";if(/art|music|drawing|painting|photography|video|singing|instrument|theater|acting|craft|creativity|design|sewing/.test(n))return "Creative Arts";if(/cooking|nutrition|healthy|first aid|carpentry|building|making|organization|time management|money|entrepreneurship|responsibility|teaching|public service|pet care|animals/.test(n))return "Life Skills";if(/technology|coding|digital|media literacy|engineering|science|math|logic|puzzle|chess|strategy|research|memory|critical thinking|problem solving|scientific/.test(n))return "STEM & Technology";if(/nature|outdoor|weather|space|astronomy|plants|wildlife|geography|world cultures/.test(n))return "Nature & World";return "Learning & Communication";}
+function rlgAllSkills(){return [...new Set([...BASE_SKILLS,...EXTRA_SKILLS,...child().skills.map(x=>x.name)])].sort((a,b)=>a.localeCompare(b));}
+function rlgFillCategories(id,includeAll=false){const e=document.getElementById(id);if(!e)return;const old=e.value;e.innerHTML=(includeAll?'<option value="all">All categories</option>':'')+RLG_CATEGORIES.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');if([...e.options].some(o=>o.value===old))e.value=old;}
+function quickLogFromHome(){const t=document.getElementById('homeActivityText').value.trim(),m=Math.max(1,Math.min(600,Number(document.getElementById('homeActivityMinutes').value)||20));if(!t)return toast('Describe your activity first.');document.getElementById('activityText').value=t;document.getElementById('activityMinutes').value=m;showTab('log');analyzeActivity();}
+function renderHome(){const c=child(),today=new Date().toDateString(),acts=c.activities.filter(a=>new Date(a.date).toDateString()===today);document.getElementById('todaySummary').textContent=acts.length?acts.length+' activities today · '+acts.reduce((s,a)=>s+(Number(a.xp)||0),0)+' XP earned.':'No activities logged today yet. Every little effort counts.';const recent=c.activities.slice().reverse().slice(0,4);document.getElementById('recentActivities').innerHTML=recent.length?recent.map(activityHTML).join(''):'<div class="empty">Your activities will appear here.</div>';document.getElementById('topSkills').innerHTML=c.skills.slice().sort((a,b)=>b.xp-a.xp).slice(0,5).map(skillHTML).join('');let card=document.getElementById('rlgHomeCharacter');if(!card){card=document.createElement('div');card.id='rlgHomeCharacter';card.className='home-character-card';document.getElementById('page-home').insertBefore(card,document.getElementById('page-home').firstChild);}const l=level(c.xp),prev=THRESHOLDS[l-1],next=nextXP(c.xp),pct=l>=26?100:Math.max(0,Math.min(100,(c.xp-prev)/(next-prev)*100));card.innerHTML=`<div class="home-character-art">${artFor(c,l)}</div><div><div class="eyebrow">Your character</div><h2 style="margin:3px 0">${esc(c.name)}</h2><div class="home-level">Level ${l} · ${esc(stageName(l))}</div><div class="bar" style="height:13px"><span style="width:${pct}%"></span></div><small class="muted">${c.xp} XP total · ${l>=26?'Maximum level reached':(next-c.xp)+' XP to next level'}</small></div>`;}
+function renderSkills(){const c=child(),q=(document.getElementById('skillSearch')?.value||'').toLowerCase(),arr=c.skills.filter(x=>x.name.toLowerCase().includes(q)).sort((a,b)=>a.name.localeCompare(b.name)),el=document.getElementById('skillList');el.innerHTML=arr.length?`<div class="skillgrid ${arr.length>24?'three':''}">${arr.map(skillHTML).join('')}</div>`:'<div class="empty">No skills are being tracked yet.</div>';const title=document.querySelector('#page-skills .section-title');if(title)title.textContent='Skill Bars';}
+function renderIdeas(){rlgFillCategories('ideaCategory',true);const cat=document.getElementById('ideaCategory')?.value||'all',q=(document.getElementById('ideaSearch')?.value||'').toLowerCase(),names=rlgAllSkills().filter(n=>(cat==='all'||rlgCategory(n)===cat)&&n.toLowerCase().includes(q));document.getElementById('ideaList').innerHTML=names.length?`<div class="idea-grid">${names.map(n=>{const x=child().skills.find(s=>s.name===n),a=ideasFor(n);return `<article class="idea-card"><div class="row"><b>${esc(n)}</b><span class="tag">${x?'Level '+level(x.xp)+' · '+x.xp+' XP':'Explore skill'}</span></div><small class="muted">${esc(rlgCategory(n))}</small><p class="muted">Ways to grow:</p><div><span class="idea-level">Start</span>${esc(a[0])}</div><div style="margin-top:6px"><span class="idea-level">Build</span>${esc(a[1]||a[0])}</div><div style="margin-top:6px"><span class="idea-level">Stretch</span>${esc(a[2]||a[a.length-1])}</div><div class="row wrap" style="margin-top:10px">${x?`<button class="btn secondary small" onclick="logIdea('${esc(n)}')">＋ Log activity</button>`:`<button class="btn small" onclick="addSkill('${esc(n)}')">＋ Track skill</button>`}<button class="btn secondary small" onclick="makeSkillGoal('${esc(n)}')">Set goal</button></div></article>`}).join('')}</div>`:'<div class="empty">No skills match those filters.</div>';}
+function rlgVideoSetup(){rlgFillCategories('videoCategory');rlgFillCategories('videoCategoryFilter',true);const cat=document.getElementById('videoCategory')?.value||RLG_CATEGORIES[0];const all=rlgAllSkills();const e=document.getElementById('videoSkill');if(e){const old=e.value,arr=all.filter(n=>rlgCategory(n)===cat);e.innerHTML=arr.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join('');if(arr.includes(old))e.value=old;}const filter=document.getElementById('videoSkillFilter');if(filter){const old=filter.value;filter.innerHTML='<option value="all">All skills</option>'+all.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join('');if([...filter.options].some(o=>o.value===old))filter.value=old;}}
+function populateVideoSkills(){rlgVideoSetup();}
+function rlgPlatform(url){try{const h=new URL(url).hostname.toLowerCase();if(h.includes('youtube.com')||h.includes('youtu.be'))return 'YouTube';if(h.includes('instagram.com'))return 'Instagram';if(h.includes('facebook.com')||h.includes('fb.watch'))return 'Facebook';if(h.includes('tiktok.com'))return 'TikTok';}catch(e){}return '';}
+function addVideo(){const title=document.getElementById('videoTitle').value.trim(),url=document.getElementById('videoURL').value.trim(),skill=document.getElementById('videoSkill').value;if(!title||!url)return toast('Add a title and social media link.');const platform=rlgPlatform(url);if(!platform)return toast('Use an Instagram, YouTube, Facebook, or TikTok link.');if(!/^https:\/\//i.test(url))return toast('Please use a secure https:// link.');db.videos=db.videos||[];db.videos.push({id:uid(),title,url,skill,category:rlgCategory(skill),platform,date:Date.now()});save();document.getElementById('videoTitle').value='';document.getElementById('videoURL').value='';renderVideos();toast('Learning link saved!');}
+function renderVideos(){const items=db.videos||[],cat=document.getElementById('videoCategoryFilter')?.value||'all',skill=document.getElementById('videoSkillFilter')?.value||'all',shown=items.filter(v=>(cat==='all'||(v.category||rlgCategory(v.skill||''))===cat)&&(skill==='all'||v.skill===skill));document.getElementById('videoList').innerHTML=shown.length?`<div class="video-grid">${shown.slice().reverse().map((v,i)=>`<article class="video-card"><div class="video-platform">${esc(v.platform||rlgPlatform(v.url)||'SOCIAL VIDEO')}</div><h3>${esc(v.title)}</h3><p class="muted">${esc(v.category||rlgCategory(v.skill||''))} · ${esc(v.skill||'General')}</p><a style="color:var(--blue)" href="${esc(v.url)}" target="_blank" rel="noopener noreferrer">Open original post ↗</a> <button class="btn danger small" onclick="removeVideoById('${esc(v.id||'')}')">Delete</button></article>`).join('')}</div>`:'<div class="empty">No saved posts match these filters. Add a link above.</div>';}
+function removeVideoById(id){const i=(db.videos||[]).findIndex(v=>v.id===id);if(i>=0){db.videos.splice(i,1);save();renderVideos();}}
+function rlgLocalSetup(){rlgFillCategories('localCategory');const cat=document.getElementById('localCategory')?.value||RLG_CATEGORIES[0],e=document.getElementById('localSkill');if(e){const old=e.value,a=rlgAllSkills().filter(n=>rlgCategory(n)===cat);e.innerHTML=a.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join('');if(a.includes(old))e.value=old;}}
+function populateLocalSkills(){rlgLocalSetup();renderLocal();}
+function rlgProfessionalSamples(skill){const specific={Baseball:[['⚾','Diamond Path Baseball Academy','Hitting mechanics, throwing fundamentals and fielding footwork'],['🧢','Next Inning Youth Training','Small-group baseball skills and confidence sessions']],Basketball:[['🏀','Above the Rim Skills Studio','Ball handling, shooting form and footwork']],Swimming:[['🏊','Blue Wave Swim School','Water confidence, stroke basics and swim safety']],Cooking:[['🥣','Kitchen Explorers Studio','Kitchen safety, simple meals and baking basics']],Music:[['🎹','Bright Note Music House','Beginner piano, rhythm and music reading']],Soccer:[['⚽','First Touch Soccer Lab','Ball control, passing, footwork and game awareness']]};return specific[skill]||[['🌟',skill+' Growth Studio','Beginner-friendly lessons, guided practice and confidence building in '+skill.toLowerCase()],['🎯','Next Step '+skill+' Academy','Small-group instruction, skill fundamentals and age-appropriate challenges']];}
+function renderLocal(){const skill=document.getElementById('localSkill')?.value||'Reading';document.getElementById('localList').innerHTML=`<div class="local-grid">${rlgProfessionalSamples(skill).map(x=>`<article class="sample-ad"><div class="row wrap"><span class="sample-label">FICTIONAL SAMPLE AD</span><span class="tag">${esc(skill)}</span></div><div class="row" style="justify-content:flex-start;margin-top:10px"><span style="font-size:34px">${x[0]}</span><div><h3>${esc(x[1])}</h3><small>Illustrative local professional profile</small></div></div><p>${esc(x[2])}</p><small>Example service area: The Woodlands · Spring · Conroe</small><p><small>Sample concept only · No real contact information</small></p><button class="btn secondary small" disabled>Sample listing preview</button></article>`).join('')}</div>`;}
+function renderProfile(){const c=child(),l=level(c.xp);document.getElementById('profileArt').innerHTML=artFor(c,l);document.getElementById('editName').value=c.name;document.getElementById('editCharacter').value=c.kind;document.getElementById('profileOverview').innerHTML=`<div class="home-character-card"><div class="home-character-art">${artFor(c,l)}</div><div><div class="eyebrow">Currently selected explorer</div><h2>${esc(c.name)}</h2><div class="home-level">Level ${l} · ${esc(stageName(l))}</div><div class="bar"><span style="width:${l>=26?100:Math.max(0,Math.min(100,(c.xp-THRESHOLDS[l-1])/(nextXP(c.xp)-THRESHOLDS[l-1])*100))}%"></span></div><div class="family-statrow"><div class="family-stat"><b>${c.xp}</b><small class="muted">Total XP</small></div><div class="family-stat"><b>${c.activities.length}</b><small class="muted">Activities</small></div><div class="family-stat"><b>${c.skills.filter(s=>s.xp>0).length}</b><small class="muted">Skills growing</small></div></div></div></div>`;document.getElementById('profileList').innerHTML=db.children.map(x=>{const active=x.id===activeId,ll=level(x.xp);return `<article class="family-card ${active?'active':''}"><div class="family-head"><div>${artFor(x,ll)}</div><div class="grow"><b>${esc(x.name)}</b><small class="muted">Level ${ll} · ${x.xp} XP</small></div>${active?'<span class="tag">Selected</span>':''}</div><div class="bar"><span style="width:${ll>=26?100:Math.max(0,Math.min(100,(x.xp-THRESHOLDS[ll-1])/(nextXP(x.xp)-THRESHOLDS[ll-1])*100))}%"></span></div><p class="muted">${x.activities.length} activities · ${x.skills.filter(s=>s.xp>0).length} growing skills</p><div class="row wrap"><button class="btn ${active?'secondary':''} small" onclick="selectChild('${x.id}')">${active?'Current profile':'Switch profile'}</button>${db.children.length>1?`<button class="btn danger small" onclick="deleteChild('${x.id}')">Delete profile</button>`:''}</div></article>`}).join('');const h=c.activities.slice().reverse();document.getElementById('profileActivityCount').textContent=h.length+' activities';document.getElementById('parentActivityList').innerHTML=h.length?h.map(activityHTML).join(''):'<div class="empty">No activities recorded for this profile yet.</div>';}
+function showTab(tab){document.querySelectorAll('main>section').forEach(x=>x.classList.add('hidden'));const page=document.getElementById('page-'+tab);if(page)page.classList.remove('hidden');document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===tab));document.querySelector('.hero').classList.toggle('hidden',!['home'].includes(tab));if(tab==='home')renderHome();if(tab==='skills')renderSkills();if(tab==='ideas')renderIdeas();if(tab==='videos'){rlgVideoSetup();renderVideos();}if(tab==='local'){rlgLocalSetup();renderLocal();}if(tab==='profile')renderProfile();if(tab==='challenges')renderChallenges();if(tab==='achievements')renderAchievements();if(tab==='explore')renderResources();if(tab==='log'){}window.scrollTo({top:0,behavior:'smooth'});}
+// End upgrade layer
 
 </script>
 </body>
